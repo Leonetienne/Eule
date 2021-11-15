@@ -1,0 +1,4 @@
+<map id="Eule::Collider" name="Eule::Collider">
+<area shape="rect" id="node1" title="Abstract class of a collider domain." alt="" coords="61,5,169,32"/>
+<area shape="rect" id="node2" href="$classEule_1_1TrapazoidalPrismCollider.html" title="A collider describing a trapazoidal prism." alt="" coords="5,80,224,107"/>
+</map>
