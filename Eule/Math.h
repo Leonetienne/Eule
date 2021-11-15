@@ -3,7 +3,7 @@
 
 namespace Eule
 {
-	/** Math utility class.
+	/** Math utility class containing basic functions.
 	*/
 	class Math
 	{
