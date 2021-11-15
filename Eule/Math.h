@@ -1,5 +1,6 @@
 #pragma once
 #include <random>
+#include <stdexcept>
 
 namespace Eule
 {
@@ -25,6 +26,10 @@ namespace Eule
 
 		//! Compares two double values with a given accuracy
 		[[nodiscard]] static constexpr bool Similar(const double a, const double b, const double epsilon = 0.00001);
+		
+		//! Will compute the actual modulo of a fraction. The % operator returns bs for n<0.
+		//! May throw divide-by-zero std::logic_error
+		[[nodiscard]] static int Mod(const int numerator, const int denominator);
 		
 		//! Will return a random double between `0` and `1`
 		static double Random();

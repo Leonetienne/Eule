@@ -75,5 +75,24 @@ bool Math::RandomChance(const double chance)
 	return Random() <= chance;
 }
 
+int Math::Mod(const int numerator, const int denominator)
+{
+	if (denominator == 0)
+		throw std::logic_error("Divide by zero");
+
+	// Quick optimizations:
+
+	// -> 0/n is always 0
+	if (numerator == 0)
+		return 0;
+
+	// -> operator% works for a > 0 && b > 0
+	if (denominator > 0 && numerator > 0)
+		return numerator % denominator;
+
+	// Else: generalized formula
+	return (denominator + (numerator % denominator)) % denominator;
+}
+
 std::mt19937 Math::rng;
 bool Math::isRngInitialized = true;

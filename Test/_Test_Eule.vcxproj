@@ -33,6 +33,7 @@
     <ClCompile Include="Math_RandomInteger.cpp" />
     <ClCompile Include="Math_RandomIntRange.cpp" />
     <ClCompile Include="Math_Similar.cpp" />
+    <ClCompile Include="Math__Mod.cpp" />
     <ClCompile Include="Math__Oscillate.cpp" />
     <ClCompile Include="Math__RandomRange.cpp" />
     <ClCompile Include="Matrix4x4.cpp" />

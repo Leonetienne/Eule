@@ -75,5 +75,8 @@
     <ClCompile Include="TrapazoidalPrismCollider.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Math__Mod.cpp">
+      <Filter>Tests\Math</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
