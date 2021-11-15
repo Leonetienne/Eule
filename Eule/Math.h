@@ -25,7 +25,7 @@ namespace Eule
 
 		//! Compares two double values with a given accuracy
 		[[nodiscard]] static constexpr bool Similar(const double a, const double b, const double epsilon = 0.00001);
-
+		
 		//! Will return a random double between `0` and `1`
 		static double Random();
 
@@ -89,12 +89,12 @@ namespace Eule
 		return (a * it) + (b * t);
 	}
 
-	inline constexpr double Math::Abs(const double a)
+	constexpr inline double Math::Abs(const double a)
 	{
 		return (a > 0.0) ? a : -a;
 	}
 
-	inline constexpr bool Math::Math::Similar(const double a, const double b, const double epsilon)
+	constexpr inline bool Math::Similar(const double a, const double b, const double epsilon)
 	{
 		return Abs(a - b) <= epsilon;
 	}

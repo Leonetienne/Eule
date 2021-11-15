@@ -71,5 +71,8 @@
     <ClInclude Include="TrapazoidalPrismCollider.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="version.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
