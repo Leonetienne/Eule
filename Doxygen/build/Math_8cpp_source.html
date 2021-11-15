@@ -154,13 +154,33 @@ $(function() {
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classEule_1_1Math.html#a6aa6d6c804f995a089779219e5136e4f">Random</a>() &lt;= chance;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;std::mt19937 Math::rng;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">bool</span> Math::isRngInitialized = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classEule_1_1Math.html#a9d17091e986de45e9bbee484e2d56430">   78</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classEule_1_1Math.html#a9d17091e986de45e9bbee484e2d56430">Math::Mod</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> numerator, <span class="keyword">const</span> <span class="keywordtype">int</span> denominator)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span> (denominator == 0)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Divide by zero&quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// Quick optimizations:</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// -&gt; 0/n is always 0</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">if</span> (numerator == 0)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// -&gt; operator% works for a &gt; 0 &amp;&amp; b &gt; 0</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (denominator &gt; 0 &amp;&amp; numerator &gt; 0)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">return</span> numerator % denominator;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">// Else: generalized formula</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> (denominator + (numerator % denominator)) % denominator;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;std::mt19937 Math::rng;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">bool</span> Math::isRngInitialized = <span class="keyword">true</span>;</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aMath_8cpp_html_ac0cae806d3e9a3772f7388dd53cfc370"><div class="ttname"><a href="Math_8cpp.html#ac0cae806d3e9a3772f7388dd53cfc370">MAKE_SURE_RNG_IS_INITIALIZED</a></div><div class="ttdeci">#define MAKE_SURE_RNG_IS_INITIALIZED</div><div class="ttdef"><b>Definition:</b> <a href="Math_8cpp_source.html#l00008">Math.cpp:8</a></div></div>
 <div class="ttc" id="aclassEule_1_1Math_html_a60bffec38a861b7701fc90bd6f1a11d6"><div class="ttname"><a href="classEule_1_1Math.html#a60bffec38a861b7701fc90bd6f1a11d6">Eule::Math::RandomChance</a></div><div class="ttdeci">static bool RandomChance(const double chance)</div><div class="ttdoc">Will 'roll' a dice, returning true  percent of the time.</div><div class="ttdef"><b>Definition:</b> <a href="Math_8cpp_source.html#l00073">Math.cpp:73</a></div></div>
 <div class="ttc" id="aConstants_8h_html_a299aabc5fc8285cbf99025330a3d0d0d"><div class="ttname"><a href="Constants_8h.html#a299aabc5fc8285cbf99025330a3d0d0d">PI</a></div><div class="ttdeci">static constexpr double PI</div><div class="ttdoc">Pi up to 50 decimal places.</div><div class="ttdef"><b>Definition:</b> <a href="Constants_8h_source.html#l00006">Constants.h:6</a></div></div>
 <div class="ttc" id="aclassEule_1_1Math_html_a48ca8451f9803ce35d2a35cfb83d8ae9"><div class="ttname"><a href="classEule_1_1Math.html#a48ca8451f9803ce35d2a35cfb83d8ae9">Eule::Math::RandomRange</a></div><div class="ttdeci">static double RandomRange(const double min, const double max)</div><div class="ttdoc">Will return a random double within a range   These bounds are INCLUSIVE!</div><div class="ttdef"><b>Definition:</b> <a href="Math_8cpp_source.html#l00056">Math.cpp:56</a></div></div>
+<div class="ttc" id="aclassEule_1_1Math_html_a9d17091e986de45e9bbee484e2d56430"><div class="ttname"><a href="classEule_1_1Math.html#a9d17091e986de45e9bbee484e2d56430">Eule::Math::Mod</a></div><div class="ttdeci">static int Mod(const int numerator, const int denominator)</div><div class="ttdoc">Will compute the actual modulo of a fraction.</div><div class="ttdef"><b>Definition:</b> <a href="Math_8cpp_source.html#l00078">Math.cpp:78</a></div></div>
 <div class="ttc" id="aConstants_8h_html"><div class="ttname"><a href="Constants_8h.html">Constants.h</a></div></div>
 <div class="ttc" id="aclassEule_1_1Math_html_ab8d66e39e794d89594c50690ccc92c60"><div class="ttname"><a href="classEule_1_1Math.html#ab8d66e39e794d89594c50690ccc92c60">Eule::Math::RandomInt</a></div><div class="ttdeci">static unsigned int RandomInt()</div><div class="ttdoc">Will return a random integer.</div><div class="ttdef"><b>Definition:</b> <a href="Math_8cpp_source.html#l00045">Math.cpp:45</a></div></div>
 <div class="ttc" id="aMath_8h_html"><div class="ttname"><a href="Math_8h.html">Math.h</a></div></div>
@@ -172,7 +192,7 @@ $(function() {
 <div class="ttc" id="aclassEule_1_1Math_html_a1b0fb72c51751470f7f819b20a5b3b3f"><div class="ttname"><a href="classEule_1_1Math.html#a1b0fb72c51751470f7f819b20a5b3b3f">Eule::Math::Oscillate</a></div><div class="ttdeci">static double Oscillate(const double a, const double b, const double counter, const double speed)</div><div class="ttdoc">Kind of like , but it oscillates over  instead of , by a given speed.</div><div class="ttdef"><b>Definition:</b> <a href="Math_8cpp_source.html#l00068">Math.cpp:68</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 15 2021 11:45:52 for Leonetienne/Eule by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 15 2021 16:10:18 for Leonetienne/Eule by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>
