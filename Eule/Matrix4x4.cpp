@@ -2,7 +2,7 @@
 #include "Vector3.h"
 #include "Math.h"
 
-//#define _EULE_NO_INTRINSICS_
+#define _EULE_NO_INTRINSICS_
 #ifndef _EULE_NO_INTRINSICS_
 #include <immintrin.h>
 #endif

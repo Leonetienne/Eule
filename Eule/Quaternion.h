@@ -2,6 +2,7 @@
 #include "Vector3.h"
 #include "Vector4.h"
 #include "Matrix4x4.h"
+#include <mutex>
 
 namespace Eule
 {
@@ -95,5 +96,9 @@ namespace Eule
         mutable bool isCacheUpToDate_inverse = false;
         mutable Vector4d cache_inverse;
 
+        // Mutexes for thread-safe caching
+        mutable std::mutex lock_eulerCache;
+        mutable std::mutex lock_matrixCache;
+        mutable std::mutex lock_inverseCache;
     };
 }

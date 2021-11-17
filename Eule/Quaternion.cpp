@@ -1,7 +1,7 @@
 #include "Quaternion.h"
 #include "Constants.h"
 
-//#define _EULE_NO_INTRINSICS_
+#define _EULE_NO_INTRINSICS_
 #ifndef _EULE_NO_INTRINSICS_
 #include <immintrin.h>
 #endif
@@ -174,6 +174,8 @@ bool Quaternion::operator!= (const Quaternion& q) const
 
 Quaternion Quaternion::Inverse() const
 {
+	const std::lock_guard<std::mutex> lock(lock_inverseCache);
+
 	if (!isCacheUpToDate_inverse)
 	{
 		cache_inverse = (Conjugate() * (1.0 / v.SqrMagnitude())).v;
@@ -214,6 +216,8 @@ Vector3d Quaternion::RotateVector(const Vector3d& vec) const
 
 Vector3d Quaternion::ToEulerAngles() const
 {
+	const std::lock_guard<std::mutex> lock(lock_eulerCache);
+
 	if (!isCacheUpToDate_euler)
 	{
 		Vector3d euler;
@@ -245,6 +249,8 @@ Vector3d Quaternion::ToEulerAngles() const
 
 Matrix4x4 Quaternion::ToRotationMatrix() const
 {
+	const std::lock_guard<std::mutex> lock(lock_matrixCache);
+
 	if (!isCacheUpToDate_matrix)
 	{
 		Matrix4x4 m;
@@ -328,7 +334,7 @@ namespace Eule
 		return os;
 	}
 
-	std::wostream& operator<<(std::wostream& os, const Quaternion& q)
+	std::wostream& operator<< (std::wostream& os, const Quaternion& q)
 	{
 		os << L"[" << q.v << L"]";
 		return os;
