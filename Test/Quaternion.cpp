@@ -128,7 +128,11 @@ namespace TransformRelated
 
 				Vector3d point(32, 19, -14);
 
-				Assert::IsTrue((point * a.ToRotationMatrix()).Similar(a * point));
+				// Generate debug output
+				std::wstringstream ss;
+				ss << (point * a.ToRotationMatrix()) << std::endl << L"===" << (a * point) << std::endl;
+
+				Assert::IsTrue((point * a.ToRotationMatrix()).Similar(a * point), ss.str().c_str());
 			}
 
 			return;

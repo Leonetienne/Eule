@@ -2,7 +2,7 @@
 #include "Math.h"
 #include <iostream>
 
-#define _EULE_NO_INTRINSICS_
+//#define _EULE_NO_INTRINSICS_
 #ifndef _EULE_NO_INTRINSICS_
 #include <immintrin.h>
 #endif
@@ -673,7 +673,6 @@ void Vector3<T>::operator/=(const T scale)
 }
 
 
-
 // Good, optimized chad version for doubles
 Vector3<double> Vector3<double>::operator*(const Matrix4x4& mat) const
 {
@@ -714,9 +713,9 @@ Vector3<double> Vector3<double>::operator*(const Matrix4x4& mat) const
 
 	#else
 	// Rotation, Scaling
-	newVec.x = (mat[0][0] * x) + (mat[1][0] * y) + (mat[2][0] * z);
-	newVec.y = (mat[0][1] * x) + (mat[1][1] * y) + (mat[2][1] * z);
-	newVec.z = (mat[0][2] * x) + (mat[1][2] * y) + (mat[2][2] * z);
+	newVec.x = (mat[0][0] * x) + (mat[0][1] * y) + (mat[0][2] * z);
+	newVec.y = (mat[1][0] * x) + (mat[1][1] * y) + (mat[1][2] * z);
+	newVec.z = (mat[2][0] * x) + (mat[2][1] * y) + (mat[2][2] * z);
 
 	// Translation
 	newVec.x += mat[0][3];
@@ -733,9 +732,9 @@ Vector3<int> Vector3<int>::operator*(const Matrix4x4& mat) const
 	Vector3<double> newVec;
 
 	// Rotation, Scaling
-	newVec.x = ((mat[0][0] * x) + (mat[1][0] * y) + (mat[2][0] * z));
-	newVec.y = ((mat[0][1] * x) + (mat[1][1] * y) + (mat[2][1] * z));
-	newVec.z = ((mat[0][2] * x) + (mat[1][2] * y) + (mat[2][2] * z));
+	newVec.x = (mat[0][0] * x) + (mat[0][1] * y) + (mat[0][2] * z);
+	newVec.y = (mat[1][0] * x) + (mat[1][1] * y) + (mat[1][2] * z);
+	newVec.z = (mat[2][0] * x) + (mat[2][1] * y) + (mat[2][2] * z);
 
 	// Translation
 	newVec.x += mat[0][3];

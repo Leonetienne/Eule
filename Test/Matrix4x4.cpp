@@ -980,5 +980,51 @@ namespace Matrices
 			Assert::IsFalse(a != b);
 			return;
 		}
+
+		// Tests if the equal const operator (==) and not-equals operator (!=) work (equal: false)
+		TEST_METHOD(Operator_Equals_Const_NotEquals_False)
+		{
+			Matrix4x4 a;
+			a[0] = { 0x0, 0x1, 0x2, 0x3 };
+			a[1] = { 0x4, 0x5, 0x6, 0x7 };
+			a[2] = { 0x8, 0x9, 0xA, 0xB };
+			a[3] = { 0xC, 0xD, 0xE, 0xF };
+
+			Matrix4x4 b;
+			b[3] = { 0xF ,0xD, 0xE, 0xC };
+			b[2] = { 0xB ,0x9, 0xA, 0x8 };
+			b[1] = { 0x7 ,0x5, 0x6, 0x4 };
+			b[0] = { 0x3 ,0x1, 0x2, 0x0 };
+
+			const Matrix4x4 a_const = a;
+			const Matrix4x4 b_const = b;
+
+			Assert::IsFalse(a_const == b_const);
+			Assert::IsTrue(a_const != b_const);
+			return;
+		}
+
+		// Tests if the equal const operator (==) and not-equals operator (!=) work (equal: true)
+		TEST_METHOD(Operator_Equals_Const_False)
+		{
+			Matrix4x4 a;
+			a[0] = { 0x0, 0x1, 0x2, 0x3 };
+			a[1] = { 0x4, 0x5, 0x6, 0x7 };
+			a[2] = { 0x8, 0x9, 0xA, 0xB };
+			a[3] = { 0xC, 0xD, 0xE, 0xF };
+
+			Matrix4x4 b;
+			b[0] = { 0x0, 0x1, 0x2, 0x3 };
+			b[1] = { 0x4, 0x5, 0x6, 0x7 };
+			b[2] = { 0x8, 0x9, 0xA, 0xB };
+			b[3] = { 0xC, 0xD, 0xE, 0xF };
+
+			const Matrix4x4 a_const = a;
+			const Matrix4x4 b_const = b;
+
+			Assert::IsTrue(a_const == b_const);
+			Assert::IsFalse(a_const != b_const);
+			return;
+		}
 	};
 }

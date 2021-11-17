@@ -2,7 +2,7 @@
 #include "Vector3.h"
 #include "Math.h"
 
-#define _EULE_NO_INTRINSICS_
+//#define _EULE_NO_INTRINSICS_
 #ifndef _EULE_NO_INTRINSICS_
 #include <immintrin.h>
 #endif
@@ -404,6 +404,16 @@ bool Matrix4x4::operator!=(const Matrix4x4& other)
 	return !operator==(other);
 }
 
+bool Matrix4x4::operator==(const Matrix4x4& other) const
+{
+	return v == other.v;
+}
+
+bool Matrix4x4::operator!=(const Matrix4x4& other) const
+{
+	return !operator==(other);
+}
+
 const Vector3d Matrix4x4::GetTranslationComponent() const
 {
 	return Vector3d(d, h, l);
@@ -617,7 +627,7 @@ bool Matrix4x4::Similar(const Matrix4x4& other, double epsilon) const
 
 namespace Eule
 {
-	std::ostream& operator<<(std::ostream& os, const Matrix4x4& m)
+	std::ostream& operator<< (std::ostream& os, const Matrix4x4& m)
 	{
 		os << std::endl;
 
@@ -632,7 +642,7 @@ namespace Eule
 		return os;
 	}
 
-	std::wostream& operator<<(std::wostream& os, const Matrix4x4& m)
+	std::wostream& operator<< (std::wostream& os, const Matrix4x4& m)
 	{
 		os << std::endl;
 

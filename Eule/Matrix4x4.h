@@ -77,7 +77,9 @@ namespace Eule
 		void operator=(Matrix4x4&& other) noexcept;
 
 		bool operator==(const Matrix4x4& other);
+		bool operator==(const Matrix4x4& other) const;
 		bool operator!=(const Matrix4x4& other);
+		bool operator!=(const Matrix4x4& other) const;
 
 		//! Will return d,h,l as a Vector3d(x,y,z)
 		const Vector3d GetTranslationComponent() const;
@@ -121,8 +123,8 @@ namespace Eule
 		//! Will compare if two matrices are similar to a certain epsilon value
 		bool Similar(const Matrix4x4& other, double epsilon = 0.00001) const;
 
-		friend std::ostream& operator<<(std::ostream& os, const Matrix4x4& m);
-		friend std::wostream& operator<<(std::wostream& os, const Matrix4x4& m);
+		friend std::ostream& operator<< (std::ostream& os, const Matrix4x4& m);
+		friend std::wostream& operator<< (std::wostream& os, const Matrix4x4& m);
 
 		// Shorthands
 		double& a = v[0][0];
