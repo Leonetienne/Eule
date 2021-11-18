@@ -78,7 +78,7 @@ bool Math::RandomChance(const double chance)
 int Math::Mod(const int numerator, const int denominator)
 {
 	if (denominator == 0)
-		throw std::logic_error("Divide by zero");
+		throw std::logic_error("Division by zero");
 
 	// Quick optimizations:
 
