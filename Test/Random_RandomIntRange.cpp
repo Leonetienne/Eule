@@ -1,13 +1,13 @@
 #include "CppUnitTest.h"
 #include "../_TestingUtilities/Testutil.h"
-#include "../Eule/Math.h"
+#include "../Eule/Random.h"
 #include <array>
 #include <sstream>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace Eule;
 
-namespace _Math
+namespace _Random
 {
 	TEST_CLASS(_RandomIntRange)
 	{
@@ -18,7 +18,7 @@ namespace _Math
 			// Test 1000 random integers
 			for (std::size_t i = 0; i < 1000; i++)
 			{
-				int rnd = Math::RandomIntRange(49, 99);
+				int rnd = Random::RandomIntRange(49, 99);
 
 				Assert::IsTrue(rnd >= 49, L"rnd too small");
 				Assert::IsTrue(rnd <= 99, L"rnd too big");
@@ -33,7 +33,7 @@ namespace _Math
 			// Test 1000 random integers
 			for (std::size_t i = 0; i < 1000; i++)
 			{
-				int rnd = Math::RandomIntRange(-39, 99);
+				int rnd = Random::RandomIntRange(-39, 99);
 
 				Assert::IsTrue(rnd >= -39, L"rnd too small");
 				Assert::IsTrue(rnd <= 99, L"rnd too big");
@@ -48,7 +48,7 @@ namespace _Math
 			// Test 1000 random integers
 			for (std::size_t i = 0; i < 1000; i++)
 			{
-				int rnd = Math::RandomIntRange(-39, -10);
+				int rnd = Random::RandomIntRange(-39, -10);
 
 				Assert::IsTrue(rnd >= -39, L"rnd too small");
 				Assert::IsTrue(rnd <= -10, L"rnd too big");
@@ -68,7 +68,7 @@ namespace _Math
 
 			for (std::size_t i = 0; i < 1000; i++)
 			{
-				int randomVal = Math::RandomIntRange(0, 9);
+				int randomVal = Random::RandomIntRange(0, 9);
 				foundDigits[randomVal] = true;
 			}
 
@@ -88,7 +88,7 @@ namespace _Math
 
 			// Exercise
 			// Create 1000 random values
-			std::generate_n(rands.data(), rands.size(), []()->int { return Math::RandomIntRange(100, (int)4e9); });
+			std::generate_n(rands.data(), rands.size(), []()->int { return Random::RandomIntRange(100, (int)4e9); });
 			
 			// Verify
 			const double stddev = Testutil::Stddev(rands);

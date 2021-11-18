@@ -1,13 +1,13 @@
 #include "CppUnitTest.h"
 #include "../_TestingUtilities/Testutil.h"
-#include "../Eule/Math.h"
+#include "../Eule/Random.h"
 #include <array>
 #include <sstream>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace Eule;
 
-namespace _Math
+namespace _Random
 {
 	TEST_CLASS(_RandomInteger)
 	{
@@ -21,7 +21,7 @@ namespace _Math
 
 			// Exercise
 			// Create 1000 random values
-			std::generate_n(rands.data(), rands.size(), []()->unsigned int { return Math::RandomUint(); });
+			std::generate_n(rands.data(), rands.size(), []()->unsigned int { return Random::RandomUint(); });
 
 			// Verify
 			const double stddev = Testutil::Stddev<unsigned int>(rands);
@@ -39,7 +39,7 @@ namespace _Math
 			
 			// Exercise
 			// Create 1000 random values
-			std::generate_n(rands.data(), rands.size(), []()->int { return Math::RandomInt(); });
+			std::generate_n(rands.data(), rands.size(), []()->int { return Random::RandomInt(); });
 
 			// Verify
 			const double stddev = Testutil::Stddev<int>(rands);

@@ -29,13 +29,13 @@
     <ClCompile Include="Math_Lerp.cpp" />
     <ClCompile Include="Math_Max.cpp" />
     <ClCompile Include="Math_Min.cpp" />
-    <ClCompile Include="Math_Random.cpp" />
-    <ClCompile Include="Math_RandomInteger.cpp" />
-    <ClCompile Include="Math_RandomIntRange.cpp" />
+    <ClCompile Include="Random__RandomFloat.cpp" />
+    <ClCompile Include="Random__RandomInteger.cpp" />
+    <ClCompile Include="Random_RandomIntRange.cpp" />
     <ClCompile Include="Math_Similar.cpp" />
     <ClCompile Include="Math__Mod.cpp" />
     <ClCompile Include="Math__Oscillate.cpp" />
-    <ClCompile Include="Math__RandomRange.cpp" />
+    <ClCompile Include="Random__RandomRange.cpp" />
     <ClCompile Include="Matrix4x4.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="TrapazoidalPrismCollider.cpp" />

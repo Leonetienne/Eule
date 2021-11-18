@@ -19,12 +19,12 @@
     <Filter Include="Tests\Math">
       <UniqueIdentifier>{4af509be-a959-45e0-bec2-03894a16ad60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tests\Random">
+      <UniqueIdentifier>{b0dcb516-80a3-4bf7-99d7-50186d18e1ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math__Oscillate.cpp">
-      <Filter>Tests\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Math__RandomRange.cpp">
       <Filter>Tests\Math</Filter>
     </ClCompile>
     <ClCompile Include="Math_Abs.cpp">
@@ -40,15 +40,6 @@
       <Filter>Tests\Math</Filter>
     </ClCompile>
     <ClCompile Include="Math_Min.cpp">
-      <Filter>Tests\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Math_Random.cpp">
-      <Filter>Tests\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Math_RandomInteger.cpp">
-      <Filter>Tests\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Math_RandomIntRange.cpp">
       <Filter>Tests\Math</Filter>
     </ClCompile>
     <ClCompile Include="Math_Similar.cpp">
@@ -77,6 +68,18 @@
     </ClCompile>
     <ClCompile Include="Math__Mod.cpp">
       <Filter>Tests\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Random__RandomRange.cpp">
+      <Filter>Tests\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Random_RandomIntRange.cpp">
+      <Filter>Tests\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Random__RandomInteger.cpp">
+      <Filter>Tests\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Random__RandomFloat.cpp">
+      <Filter>Tests\Random</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

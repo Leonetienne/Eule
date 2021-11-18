@@ -1,5 +1,6 @@
 #include "CppUnitTest.h"
 #include "../_TestingUtilities/Testutil.h"
+#include "../Eule/Random.h"
 #include "../Eule/Math.h"
 #include "../Eule/Constants.h"
 #include <array>
@@ -21,7 +22,7 @@ namespace _Math
 			for (std::size_t i = 0; i < 1000; i++)
 			{
 				// Setup
-				const double rnd = Math::RandomRange(-1000, 1000);
+				const double rnd = Random::RandomRange(-1000, 1000);
 				
 				// Exercise
 				const double result = Math::Oscillate(-1, 1, rnd, 1);
@@ -41,9 +42,9 @@ namespace _Math
 			for (std::size_t i = 0; i < 1000; i++)
 			{
 				// Setup
-				const double a = Math::RandomRange(-1000, 1000);
-				const double b = Math::RandomRange(-1000, 1000);
-				const int even = Math::RandomIntRange(-1000, 1000) & ~1;
+				const double a = Random::RandomRange(-1000, 1000);
+				const double b = Random::RandomRange(-1000, 1000);
+				const int even = Random::RandomIntRange(-1000, 1000) & ~1;
 
 				// Exercise
 				const double result = Math::Oscillate(a, b, even, 1);
@@ -70,9 +71,9 @@ namespace _Math
 			for (std::size_t i = 0; i < 1000; i++)
 			{
 				// Setup
-				const double a = Math::RandomRange(-1000, 1000);
-				const double b = Math::RandomRange(-1000, 1000);
-				const int uneven = Math::RandomIntRange(-1000, 1000) | 1;
+				const double a = Random::RandomRange(-1000, 1000);
+				const double b = Random::RandomRange(-1000, 1000);
+				const int uneven = Random::RandomIntRange(-1000, 1000) | 1;
 
 				// Exercise
 				const double result = Math::Oscillate(a, b, uneven, 1);
@@ -90,9 +91,9 @@ namespace _Math
 			for (std::size_t i = 0; i < 1000; i++)
 			{
 				// Setup
-				const double a = Math::RandomRange(-1000, 1000);
-				const double b = Math::RandomRange(-1000, 1000);
-				const int anInt = Math::RandomIntRange(-1000, 1000);
+				const double a = Random::RandomRange(-1000, 1000);
+				const double b = Random::RandomRange(-1000, 1000);
+				const int anInt = Random::RandomIntRange(-1000, 1000);
 
 				// Exercise
 				const double result = Math::Oscillate(a, b, anInt + 0.5, 1);
@@ -118,9 +119,9 @@ namespace _Math
 			for (std::size_t i = 0; i < 1000; i++)
 			{
 				// Setup
-				const double a = Math::RandomRange(-1, 1);
-				const double b = Math::RandomRange(-1, 1);
-				const int even = Math::RandomIntRange(-1000, 1000) & ~1;
+				const double a = Random::RandomRange(-1, 1);
+				const double b = Random::RandomRange(-1, 1);
+				const int even = Random::RandomIntRange(-1000, 1000) & ~1;
 
 				// Exercise
 				const double result = Math::Oscillate(a, b, even + 0.25, 1);
@@ -148,9 +149,9 @@ namespace _Math
 			for (std::size_t i = 0; i < 1000; i++)
 			{
 				// Setup
-				const double a = Math::RandomRange(-1, 1);
-				const double b = Math::RandomRange(-1, 1);
-				const int even = Math::RandomIntRange(-1000, 1000) & ~1;
+				const double a = Random::RandomRange(-1, 1);
+				const double b = Random::RandomRange(-1, 1);
+				const int even = Random::RandomIntRange(-1000, 1000) & ~1;
 
 				// Exercise
 				const double result = Math::Oscillate(a, b, even + 0.75, 1);
@@ -170,9 +171,9 @@ namespace _Math
 			for (std::size_t i = 0; i < 1000; i++)
 			{
 				// Setup
-				const double a = Math::RandomRange(-1, 1);
-				const double b = Math::RandomRange(-1, 1);
-				const int uneven = Math::RandomIntRange(-1000, 1000) | 1;
+				const double a = Random::RandomRange(-1, 1);
+				const double b = Random::RandomRange(-1, 1);
+				const int uneven = Random::RandomIntRange(-1000, 1000) | 1;
 
 				// Exercise
 				const double result = Math::Oscillate(a, b, uneven + 0.25, 1);
@@ -192,9 +193,9 @@ namespace _Math
 			for (std::size_t i = 0; i < 1000; i++)
 			{
 				// Setup
-				const double a = Math::RandomRange(-1, 1);
-				const double b = Math::RandomRange(-1, 1);
-				const int uneven = Math::RandomIntRange(-1000, 1000) | 1;
+				const double a = Random::RandomRange(-1, 1);
+				const double b = Random::RandomRange(-1, 1);
+				const int uneven = Random::RandomIntRange(-1000, 1000) | 1;
 
 				// Exercise
 				const double result = Math::Oscillate(a, b, uneven + 0.75, 1);
@@ -214,8 +215,8 @@ namespace _Math
 			for (std::size_t i = 0; i < 1000; i++)
 			{
 				// Setup
-				const double a = Math::RandomRange(-1000, 1000);
-				const double b = Math::RandomRange(-1000, 1000);
+				const double a = Random::RandomRange(-1000, 1000);
+				const double b = Random::RandomRange(-1000, 1000);
 
 				// Exercise
 				const double result = Math::Oscillate(a, b, 0.5, 2);

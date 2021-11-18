@@ -39,6 +39,9 @@
     <ClCompile Include="TrapazoidalPrismCollider.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matrix4x4.h">
@@ -72,6 +75,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="version.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

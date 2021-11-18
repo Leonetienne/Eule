@@ -1,5 +1,4 @@
 #pragma once
-#include <random>
 #include <stdexcept>
 
 namespace Eule
@@ -30,26 +29,6 @@ namespace Eule
 		//! Will compute the actual modulo of a fraction. The % operator returns bs for n<0.
 		//! May throw division-by-zero std::logic_error
 		[[nodiscard]] static int Mod(const int numerator, const int denominator);
-		
-		//! Will return a random double between `0` and `1`
-		static double Random();
-
-		//! Will return a random unsigned integer.
-		static unsigned int RandomUint();
-
-		//! Will return a random integer
-		static unsigned int RandomInt();
-
-		//! Will return a random double within a range  
-		//! These bounds are INCLUSIVE!
-		static double RandomRange(const double min, const double max);
-
-		//! Will return a random integer within a range. This is faster than `(int)RandomRange(x,y)`  
-		//! These bounds are INCLUSIVE!
-		static int RandomIntRange(const int max, const int min);
-
-		//! Will 'roll' a dice, returning `true` \f$100 * chance\f$ percent of the time.
-		static bool RandomChance(const double chance);
 
 		//! Kind of like \f$sin(counter)\f$, but it oscillates over \f$[a,b]\f$ instead of \f$[-1,1]\f$, by a given speed.  
 		//! Given that \f$speed = 1\f$, the result will always be `a` if `counter` is even, and `b` if `counter` is uneven.  
@@ -58,12 +37,6 @@ namespace Eule
 		static double Oscillate(const double a, const double b, const double counter, const double speed);
 
 	private:
-		//! Will initialize the random number generator
-		static void InitRng();
-
-		static std::mt19937 rng;
-		static bool isRngInitialized;
-
 		// No instanciation! >:(
 		Math();
 	};
