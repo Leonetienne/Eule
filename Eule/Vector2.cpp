@@ -19,6 +19,7 @@ using namespace Eule;
 */
 
 // Good, optimized chad version for doubles
+template<>
 double Vector2<double>::DotProduct(const Vector2<double>& other) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -44,6 +45,7 @@ double Vector2<double>::DotProduct(const Vector2<double>& other) const
 }
 
 // Slow, lame version for intcels
+template<>
 double Vector2<int>::DotProduct(const Vector2<int>& other) const
 {
 	int iDot = (x * other.x) +
@@ -55,6 +57,7 @@ double Vector2<int>::DotProduct(const Vector2<int>& other) const
 
 
 // Good, optimized chad version for doubles
+template<>
 double Vector2<double>::CrossProduct(const Vector2<double>& other) const
 {
 	return (x * other.y) -
@@ -62,6 +65,7 @@ double Vector2<double>::CrossProduct(const Vector2<double>& other) const
 }
 
 // Slow, lame version for intcels
+template<>
 double Vector2<int>::CrossProduct(const Vector2<int>& other) const
 {
 	int iCross = (x * other.y) -
@@ -73,6 +77,7 @@ double Vector2<int>::CrossProduct(const Vector2<int>& other) const
 
 
 // Good, optimized chad version for doubles
+template<>
 double Vector2<double>::SqrMagnitude() const
 {
 	// x.DotProduct(x) == x.SqrMagnitude()
@@ -80,6 +85,7 @@ double Vector2<double>::SqrMagnitude() const
 }
 
 // Slow, lame version for intcels
+template<>
 double Vector2<int>::SqrMagnitude() const
 {
 	int iSqrMag = x*x + y*y;
@@ -93,7 +99,7 @@ double Vector2<T>::Magnitude() const
 }
 
 
-
+template<>
 Vector2<double> Vector2<double>::VectorScale(const Vector2<double>& scalar) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -124,6 +130,7 @@ Vector2<double> Vector2<double>::VectorScale(const Vector2<double>& scalar) cons
 	#endif
 }
 
+template<>
 Vector2<int> Vector2<int>::VectorScale(const Vector2<int>& scalar) const
 {
 	return Vector2<int>(
@@ -143,6 +150,7 @@ Vector2<double> Vector2<T>::Normalize() const
 }
 
 // Method to normalize a Vector2d
+template<>
 void Vector2<double>::NormalizeSelf()
 {
 	double length = Magnitude();
@@ -184,6 +192,7 @@ void Vector2<double>::NormalizeSelf()
 
 // You can't normalize an int vector, ffs!
 // But we need an implementation for T=int
+template<>
 void Vector2<int>::NormalizeSelf()
 {
 	std::cerr << "Stop normalizing int-vectors!!" << std::endl;
@@ -195,6 +204,7 @@ void Vector2<int>::NormalizeSelf()
 
 
 // Good, optimized chad version for doubles
+template<>
 void Vector2<double>::LerpSelf(const Vector2<double>& other, double t)
 {
 	const double it = 1.0 - t; // Inverse t
@@ -235,6 +245,7 @@ void Vector2<double>::LerpSelf(const Vector2<double>& other, double t)
 
 
 // Slow, lame version for intcels
+template<>
 void Vector2<int>::LerpSelf(const Vector2<int>& other, double t)
 {
 	const double it = 1.0 - t; // Inverse t
@@ -245,6 +256,7 @@ void Vector2<int>::LerpSelf(const Vector2<int>& other, double t)
 	return;
 }
 
+template<>
 Vector2<double> Vector2<double>::Lerp(const Vector2<double>& other, double t) const
 {
 	Vector2d copy(*this);
@@ -253,6 +265,7 @@ Vector2<double> Vector2<double>::Lerp(const Vector2<double>& other, double t) co
 	return copy;
 }
 
+template<>
 Vector2<double> Vector2<int>::Lerp(const Vector2<int>& other, double t) const
 {
 	Vector2d copy(this->ToDouble());
@@ -312,7 +325,7 @@ Vector2<double> Vector2<T>::ToDouble() const
 	return Vector2<double>((double)x, (double)y);
 }
 
-
+template<>
 Vector2<double> Vector2<double>::operator+(const Vector2<double>& other) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -353,6 +366,7 @@ Vector2<T> Vector2<T>::operator+(const Vector2<T>& other) const
 
 
 
+template<>
 void Vector2<double>::operator+=(const Vector2<double>& other)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -391,6 +405,7 @@ void Vector2<T>::operator+=(const Vector2<T>& other)
 
 
 
+template<>
 Vector2<double> Vector2<double>::operator-(const Vector2<double>& other) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -431,6 +446,7 @@ Vector2<T> Vector2<T>::operator-(const Vector2<T>& other) const
 
 
 
+template<>
 void Vector2<double>::operator-=(const Vector2<double>& other)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -469,6 +485,7 @@ void Vector2<T>::operator-=(const Vector2<T>& other)
 
 
 
+template<>
 Vector2<double> Vector2<double>::operator*(const double scale) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -510,6 +527,7 @@ Vector2<T> Vector2<T>::operator*(const T scale) const
 
 
 
+template<>
 void Vector2<double>::operator*=(const double scale)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -548,6 +566,7 @@ void Vector2<T>::operator*=(const T scale)
 
 
 
+template<>
 Vector2<double> Vector2<double>::operator/(const double scale) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -589,6 +608,7 @@ Vector2<T> Vector2<T>::operator/(const T scale) const
 
 
 
+template<>
 void Vector2<double>::operator/=(const double scale)
 {
 	#ifndef _EULE_NO_INTRINSICS_

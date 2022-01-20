@@ -1,9 +1,12 @@
 #include "Quaternion.h"
 #include "Constants.h"
+#include <algorithm>
+#include <functional>
 
 //#define _EULE_NO_INTRINSICS_
 #ifndef _EULE_NO_INTRINSICS_
 #include <immintrin.h>
+#include "gcccompat.h"
 #endif
 
 using namespace Eule;

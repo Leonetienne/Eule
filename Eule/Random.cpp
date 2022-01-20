@@ -1,5 +1,5 @@
 #include "Random.h"
-#include <Array>
+#include <array>
 
 using namespace Eule;
 

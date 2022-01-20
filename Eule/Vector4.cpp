@@ -19,6 +19,7 @@ using namespace Eule;
 */
 
 // Good, optimized chad version for doubles
+template<>
 double Vector4<double>::SqrMagnitude() const
 {
 	return (x * x) +
@@ -28,6 +29,7 @@ double Vector4<double>::SqrMagnitude() const
 }
 
 // Slow, lame version for intcels
+template<>
 double Vector4<int>::SqrMagnitude() const
 {
 	int iSqrMag = x*x + y*y + z*z + w*w;
@@ -41,6 +43,7 @@ double Vector4<T>::Magnitude() const
 }
 
 
+template<>
 Vector4<double> Vector4<double>::VectorScale(const Vector4<double>& scalar) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -76,6 +79,7 @@ Vector4<double> Vector4<double>::VectorScale(const Vector4<double>& scalar) cons
 }
 
 
+template<>
 Vector4<int> Vector4<int>::VectorScale(const Vector4<int>& scalar) const
 {
 	return Vector4<int>(
@@ -97,7 +101,8 @@ Vector4<double> Vector4<T>::Normalize() const
 	return norm;
 }
 
-// Method to normalize a Vector43d
+// Method to normalize a Vector4d
+template<>
 void Vector4<double>::NormalizeSelf()
 {
 	double length = Magnitude();
@@ -145,6 +150,7 @@ void Vector4<double>::NormalizeSelf()
 
 // You can't normalize an int vector, ffs!
 // But we need an implementation for T=int
+template<>
 void Vector4<int>::NormalizeSelf()
 {
 	std::cerr << "Stop normalizing int-vectors!!" << std::endl;
@@ -220,6 +226,7 @@ const T& Vector4<T>::operator[](std::size_t idx) const
 
 
 // Good, optimized chad version for doubles
+template<>
 void Vector4<double>::LerpSelf(const Vector4<double>& other, double t)
 {
 	const double it = 1.0 - t; // Inverse t
@@ -264,6 +271,7 @@ void Vector4<double>::LerpSelf(const Vector4<double>& other, double t)
 
 
 // Slow, lame version for intcels
+template<>
 void Vector4<int>::LerpSelf(const Vector4<int>& other, double t)
 {
 	const double it = 1.0 - t;
@@ -276,6 +284,7 @@ void Vector4<int>::LerpSelf(const Vector4<int>& other, double t)
 	return;
 }
 
+template<>
 Vector4<double> Vector4<double>::Lerp(const Vector4<double>& other, double t) const
 {
 	Vector4d copy(*this);
@@ -284,6 +293,7 @@ Vector4<double> Vector4<double>::Lerp(const Vector4<double>& other, double t) co
 	return copy;
 }
 
+template<>
 Vector4<double> Vector4<int>::Lerp(const Vector4<int>& other, double t) const
 {
 	Vector4d copy(this->ToDouble());
@@ -294,6 +304,7 @@ Vector4<double> Vector4<int>::Lerp(const Vector4<int>& other, double t) const
 
 
 
+template<>
 Vector4<double> Vector4<double>::operator+(const Vector4<double>& other) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -340,6 +351,7 @@ Vector4<T> Vector4<T>::operator+(const Vector4<T>& other) const
 
 
 
+template<>
 void Vector4<double>::operator+=(const Vector4<double>& other)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -384,6 +396,7 @@ void Vector4<T>::operator+=(const Vector4<T>& other)
 
 
 
+template<>
 Vector4<double> Vector4<double>::operator-(const Vector4<double>& other) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -430,6 +443,7 @@ Vector4<T> Vector4<T>::operator-(const Vector4<T>& other) const
 
 
 
+template<>
 void Vector4<double>::operator-=(const Vector4<double>& other)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -474,6 +488,7 @@ void Vector4<T>::operator-=(const Vector4<T>& other)
 
 
 
+template<>
 Vector4<double> Vector4<double>::operator*(const double scale) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -521,6 +536,7 @@ Vector4<T> Vector4<T>::operator*(const T scale) const
 
 
 
+template<>
 void Vector4<double>::operator*=(const double scale)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -565,6 +581,7 @@ void Vector4<T>::operator*=(const T scale)
 
 
 
+template<>
 Vector4<double> Vector4<double>::operator/(const double scale) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -612,6 +629,7 @@ Vector4<T> Vector4<T>::operator/(const T scale) const
 
 
 
+template<>
 void Vector4<double>::operator/=(const double scale)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -668,6 +686,7 @@ bool Vector4<T>::operator==(const Vector4<T>& other) const
 
 
 // Good, optimized chad version for doubles
+template<>
 Vector4<double> Vector4<double>::operator*(const Matrix4x4& mat) const
 {
 	Vector4<double> newVec;
@@ -681,6 +700,7 @@ Vector4<double> Vector4<double>::operator*(const Matrix4x4& mat) const
 }
 
 // Slow, lame version for intcels
+template<>
 Vector4<int> Vector4<int>::operator*(const Matrix4x4& mat) const
 {
 	Vector4<double> newVec;
@@ -701,6 +721,7 @@ Vector4<int> Vector4<int>::operator*(const Matrix4x4& mat) const
 
 
 // Good, optimized chad version for doubles
+template<>
 void Vector4<double>::operator*=(const Matrix4x4& mat)
 {
 	Vector4<double> buffer = *this;
@@ -749,6 +770,7 @@ void Vector4<T>::operator=(Vector4<T>&& other) noexcept
 }
 
 // Slow, lame version for intcels
+template<>
 void Vector4<int>::operator*=(const Matrix4x4& mat)
 {
 	Vector4<double> buffer(x, y, z, w);

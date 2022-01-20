@@ -19,6 +19,7 @@ using namespace Eule;
 */
 
 // Good, optimized chad version for doubles
+template<>
 double Vector3<double>::DotProduct(const Vector3<double>& other) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -45,6 +46,7 @@ double Vector3<double>::DotProduct(const Vector3<double>& other) const
 }
 
 // Slow, lame version for intcels
+template<>
 double Vector3<int>::DotProduct(const Vector3<int>& other) const
 {
 	int iDot = (x * other.x) + (y * other.y) + (z * other.z);
@@ -54,6 +56,7 @@ double Vector3<int>::DotProduct(const Vector3<int>& other) const
 
 
 // Good, optimized chad version for doubles
+template<>
 Vector3<double> Vector3<double>::CrossProduct(const Vector3<double>& other) const
 {
 	Vector3<double> cp;
@@ -65,6 +68,7 @@ Vector3<double> Vector3<double>::CrossProduct(const Vector3<double>& other) cons
 }
 
 // Slow, lame version for intcels
+template<>
 Vector3<double> Vector3<int>::CrossProduct(const Vector3<int>& other) const
 {
 	Vector3<double> cp;
@@ -78,6 +82,7 @@ Vector3<double> Vector3<int>::CrossProduct(const Vector3<int>& other) const
 
 
 // Good, optimized chad version for doubles
+template<>
 double Vector3<double>::SqrMagnitude() const
 {
 	// x.DotProduct(x) == x.SqrMagnitude()
@@ -85,6 +90,7 @@ double Vector3<double>::SqrMagnitude() const
 }
 
 // Slow, lame version for intcels
+template<>
 double Vector3<int>::SqrMagnitude() const
 {
 	int iSqrMag = x*x + y*y + z*z;
@@ -99,6 +105,7 @@ double Vector3<T>::Magnitude() const
 
 
 
+template<>
 Vector3<double> Vector3<double>::VectorScale(const Vector3<double>& scalar) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -132,6 +139,7 @@ Vector3<double> Vector3<double>::VectorScale(const Vector3<double>& scalar) cons
 	#endif
 }
 
+template<>
 Vector3<int> Vector3<int>::VectorScale(const Vector3<int>& scalar) const
 {
 	return Vector3<int>(
@@ -153,6 +161,7 @@ Vector3<double> Vector3<T>::Normalize() const
 }
 
 // Method to normalize a Vector3d
+template<>
 void Vector3<double>::NormalizeSelf()
 {
 	const double length = Magnitude();
@@ -197,6 +206,7 @@ void Vector3<double>::NormalizeSelf()
 
 // You can't normalize an int vector, ffs!
 // But we need an implementation for T=int
+template<>
 void Vector3<int>::NormalizeSelf()
 {
 	std::cerr << "Stop normalizing int-vectors!!" << std::endl;
@@ -266,6 +276,7 @@ const T& Vector3<T>::operator[](std::size_t idx) const
 
 
 // Good, optimized chad version for doubles
+template<>
 void Vector3<double>::LerpSelf(const Vector3<double>& other, double t)
 {
 	const double it = 1.0 - t; // Inverse t
@@ -308,6 +319,7 @@ void Vector3<double>::LerpSelf(const Vector3<double>& other, double t)
 
 
 // Slow, lame version for intcels
+template<>
 void Vector3<int>::LerpSelf(const Vector3<int>& other, double t)
 {
 	const double it = 1.0 - t; // Inverse t
@@ -319,6 +331,7 @@ void Vector3<int>::LerpSelf(const Vector3<int>& other, double t)
 	return;
 }
 
+template<>
 Vector3<double> Vector3<double>::Lerp(const Vector3<double>& other, double t) const
 {
 	Vector3d copy(*this);
@@ -327,6 +340,7 @@ Vector3<double> Vector3<double>::Lerp(const Vector3<double>& other, double t) co
 	return copy;
 }
 
+template<>
 Vector3<double> Vector3<int>::Lerp(const Vector3<int>& other, double t) const
 {
 	Vector3d copy(this->ToDouble());
@@ -337,6 +351,7 @@ Vector3<double> Vector3<int>::Lerp(const Vector3<int>& other, double t) const
 
 
 
+template<>
 Vector3<double> Vector3<double>::operator+(const Vector3<double>& other) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -380,6 +395,7 @@ Vector3<T> Vector3<T>::operator+(const Vector3<T>& other) const
 
 
 
+template<>
 void Vector3<double>::operator+=(const Vector3<double>& other)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -421,6 +437,7 @@ void Vector3<T>::operator+=(const Vector3<T>& other)
 
 
 
+template<>
 Vector3<double> Vector3<double>::operator-(const Vector3<double>& other) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -464,6 +481,7 @@ Vector3<T> Vector3<T>::operator-(const Vector3<T>& other) const
 
 
 
+template<>
 void Vector3<double>::operator-=(const Vector3<double>& other)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -505,6 +523,7 @@ void Vector3<T>::operator-=(const Vector3<T>& other)
 
 
 
+template<>
 Vector3<double> Vector3<double>::operator*(const double scale) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -549,6 +568,7 @@ Vector3<T> Vector3<T>::operator*(const T scale) const
 
 
 
+template<>
 void Vector3<double>::operator*=(const double scale)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -590,6 +610,7 @@ void Vector3<T>::operator*=(const T scale)
 
 
 
+template<>
 Vector3<double> Vector3<double>::operator/(const double scale) const
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -634,6 +655,7 @@ Vector3<T> Vector3<T>::operator/(const T scale) const
 
 
 
+template<>
 void Vector3<double>::operator/=(const double scale)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -674,6 +696,7 @@ void Vector3<T>::operator/=(const T scale)
 
 
 // Good, optimized chad version for doubles
+template<>
 Vector3<double> Vector3<double>::operator*(const Matrix4x4& mat) const
 {
 	Vector3<double> newVec;
@@ -727,6 +750,7 @@ Vector3<double> Vector3<double>::operator*(const Matrix4x4& mat) const
 }
 
 // Slow, lame version for intcels
+template<>
 Vector3<int> Vector3<int>::operator*(const Matrix4x4& mat) const
 {
 	Vector3<double> newVec;
@@ -751,6 +775,7 @@ Vector3<int> Vector3<int>::operator*(const Matrix4x4& mat) const
 
 
 // Good, optimized chad version for doubles
+template<>
 void Vector3<double>::operator*=(const Matrix4x4& mat)
 {
 	#ifndef _EULE_NO_INTRINSICS_
@@ -832,6 +857,7 @@ void Vector3<T>::operator=(Vector3<T>&& other) noexcept
 }
 
 // Slow, lame version for intcels
+template<>
 void Vector3<int>::operator*=(const Matrix4x4& mat)
 {
 	Vector3<double> buffer(x, y, z);

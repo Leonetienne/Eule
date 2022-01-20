@@ -32,6 +32,7 @@
   <ItemGroup>
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="gcccompat.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Matrix4x4.h" />
     <ClInclude Include="Quaternion.h" />

@@ -80,5 +80,8 @@
     <ClInclude Include="Random.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="gcccompat.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
