@@ -1116,7 +1116,7 @@ bool Random::RandomChance(const double chance)
 }
 
 std::mt19937 Random::rng;
-bool Random::isRngInitialized = true;
+bool Random::isRngInitialized = false;
 
 
 /*** ../Eule/TrapazoidalPrismCollider.cpp ***/
