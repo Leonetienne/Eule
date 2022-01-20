@@ -61,6 +61,8 @@ double Random::RandomRange(double min, double max)
 // These bounds are INCLUSIVE!
 int Random::RandomIntRange(int min, int max)
 {
+	MAKE_SURE_RNG_IS_INITIALIZED;
+
 	return (rng() % (max + 1 - min)) + min;
 }
 
