@@ -2,6 +2,7 @@
 #include "Constants.h"
 #include <algorithm>
 #include <functional>
+#include <cmath>
 
 //#define _EULE_NO_INTRINSICS_
 #ifndef _EULE_NO_INTRINSICS_
