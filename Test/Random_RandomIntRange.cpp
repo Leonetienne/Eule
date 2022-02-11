@@ -88,7 +88,7 @@ TEST_CASE(__FILE__"/Big_Standard_Deviation", "[Random][RandomIntRange]")
 
     // Exercise
     // Create 1000 random values
-    std::generate_n(rands.data(), rands.size(), []()->int { return Random::RandomIntRange(100, (int)4e9); });
+    std::generate_n(rands.data(), rands.size(), []()->int { return Random::RandomIntRange(100, (int)4e8); });
 
     // Verify
     std::stringstream ss;
