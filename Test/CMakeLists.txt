@@ -28,6 +28,7 @@ add_executable(Tests
         Random__RandomFloat.cpp
         Random__RandomInteger.cpp
         Random__RandomRange.cpp
+        Random_RandomIntRange.cpp
 )
 
 target_link_libraries(Tests Eule)
