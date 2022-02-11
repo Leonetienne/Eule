@@ -7,7 +7,7 @@
 using namespace Eule;
 
 // Checks that an oscillation of speed 1 between -1 and 1 is just equal to sin(counter*pi-pi/2)
-TEST_CASE("Oracle_Sin", "[Math][Oscillate]")
+TEST_CASE(__FILE__"/Oracle_Sin", "[Math][Oscillate]")
 {
     // Test 1000 random floats
     for (std::size_t i = 0; i < 1000; i++)
@@ -27,7 +27,7 @@ TEST_CASE("Oracle_Sin", "[Math][Oscillate]")
 }
 
 // Tests that the result is a, if the counter is 0 or a whole, even integer
-TEST_CASE("Returns_a_For_Counter_0", "[Math][Oscillate]")
+TEST_CASE(__FILE__"/Returns_a_For_Counter_0", "[Math][Oscillate]")
 {
     // Test 1000 random floats
     for (std::size_t i = 0; i < 1000; i++)
@@ -55,7 +55,7 @@ TEST_CASE("Returns_a_For_Counter_0", "[Math][Oscillate]")
 }
 
 // Tests that the result is b, if the counter is a whole, uneven integer
-TEST_CASE("Returns_b_For_Uneven_Whole_Counter", "[Math][Oscillate]")
+TEST_CASE(__FILE__"/Returns_b_For_Uneven_Whole_Counter", "[Math][Oscillate]")
 {
     // Test 1000 random floats
     for (std::size_t i = 0; i < 1000; i++)
@@ -75,7 +75,7 @@ TEST_CASE("Returns_b_For_Uneven_Whole_Counter", "[Math][Oscillate]")
 }
 
 // Tests that the result is (a+b)/2, when counter satisfies (int)x + 0.5
-TEST_CASE("Returns_ab_mean_for_intx_plus_0p5", "[Math][Oscillate]")
+TEST_CASE(__FILE__"/Returns_ab_mean_for_intx_plus_0p5", "[Math][Oscillate]")
 {
     // Test 1000 random floats
     for (std::size_t i = 0; i < 1000; i++)
@@ -104,7 +104,7 @@ TEST_CASE("Returns_ab_mean_for_intx_plus_0p5", "[Math][Oscillate]")
 }
 
 // Tests that the result is (3a+b)/4, when counter satisfies 2(int)x + 0.25
-TEST_CASE("Returns_3ab_mean_for_intx_plus_0p25_counterbase_even", "[Math][Oscillate]")
+TEST_CASE(__FILE__"/Returns_3ab_mean_for_intx_plus_0p25_counterbase_even", "[Math][Oscillate]")
 {
     // Test 1000 random floats
     for (std::size_t i = 0; i < 1000; i++)
@@ -133,7 +133,7 @@ TEST_CASE("Returns_3ab_mean_for_intx_plus_0p25_counterbase_even", "[Math][Oscill
 }
 
 // Tests that the result is (a+3b)/4, when counter satisfies 2(int)x + 0.75
-TEST_CASE("Returns_a3b_mean_for_intx_plus_0p75_counterbase_even", "[Math][Oscillate]")
+TEST_CASE(__FILE__"/Returns_a3b_mean_for_intx_plus_0p75_counterbase_even", "[Math][Oscillate]")
 {
     // Test 1000 random floats
     for (std::size_t i = 0; i < 1000; i++)
@@ -155,7 +155,7 @@ TEST_CASE("Returns_a3b_mean_for_intx_plus_0p75_counterbase_even", "[Math][Oscill
 }
 
 // Tests that the result is (a+3b)/4, when counter satisfies 2(int)x+1 + 0.25
-TEST_CASE("Returns_3ab_mean_for_intx_plus_0p25_counterbase_uneven", "[Math][Oscillate]")
+TEST_CASE(__FILE__"/Returns_3ab_mean_for_intx_plus_0p25_counterbase_uneven", "[Math][Oscillate]")
 {
     // Test 1000 random floats
     for (std::size_t i = 0; i < 1000; i++)
@@ -177,7 +177,7 @@ TEST_CASE("Returns_3ab_mean_for_intx_plus_0p25_counterbase_uneven", "[Math][Osci
 }
 
 // Tests that the result is (3a+b)/4, when counter satisfies 2(int)x+1 + 0.75
-TEST_CASE("Returns_a3b_mean_for_intx_plus_0p75_counterbase_uneven", "[Math][Oscillate]")
+TEST_CASE(__FILE__"/Returns_a3b_mean_for_intx_plus_0p75_counterbase_uneven", "[Math][Oscillate]")
 {
     // Test 1000 random floats
     for (std::size_t i = 0; i < 1000; i++)
@@ -199,7 +199,7 @@ TEST_CASE("Returns_a3b_mean_for_intx_plus_0p75_counterbase_uneven", "[Math][Osci
 }
 
 // Tests that doubling the speed will double the frequency
-TEST_CASE("Doubling_Speed_Doubles_Frequency", "[Math][Oscillate]")
+TEST_CASE(__FILE__"/Doubling_Speed_Doubles_Frequency", "[Math][Oscillate]")
 {
     // Test 1000 random floats
     for (std::size_t i = 0; i < 1000; i++)
