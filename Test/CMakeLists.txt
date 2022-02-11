@@ -3,6 +3,8 @@ project(Tests)
 
 set(CMAKE_CXX_STANDARD 17)
 
+add_compile_definitions(_EULE_NO_INTRINSICS_)
+
 include_directories(..)
 link_directories(../Eule/cmake-build-debug)
 
@@ -17,6 +19,7 @@ add_executable(Tests
         Math__Max.cpp
         Math__Min.cpp
         Math__Similar.cpp
+        Matrix4x4.cpp
 )
 
 target_link_libraries(Tests Eule)
