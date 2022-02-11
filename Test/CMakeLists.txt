@@ -29,6 +29,7 @@ add_executable(Tests
         Random__RandomInteger.cpp
         Random__RandomRange.cpp
         Random_RandomIntRange.cpp
+        TrapazoidalPrismCollider.cpp
 )
 
 target_link_libraries(Tests Eule)
