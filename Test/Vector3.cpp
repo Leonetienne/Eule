@@ -11,7 +11,7 @@ namespace {
 }
 
 // Tests if all values are 0 after initialization via default constructor
-TEST_CASE(__FILE__"/New_Vector_All_0", "[Vector3]")
+TEST_CASE(__FILE__"/New_Vector_All_0", "[Vector][Vector3]")
 {
     Vector3d v3;
 
@@ -23,7 +23,7 @@ TEST_CASE(__FILE__"/New_Vector_All_0", "[Vector3]")
 }
 
 // Tests if values can be set via the constructor
-TEST_CASE(__FILE__"/Can_Set_Values_Constructor", "[Vector3]")
+TEST_CASE(__FILE__"/Can_Set_Values_Constructor", "[Vector][Vector3]")
 {
     Vector3d v3(69, 32, 16);
 
@@ -35,7 +35,7 @@ TEST_CASE(__FILE__"/Can_Set_Values_Constructor", "[Vector3]")
 }
 
 // Tests if values can be set via letters
-TEST_CASE(__FILE__"/Can_Set_Values_Letters", "[Vector3]")
+TEST_CASE(__FILE__"/Can_Set_Values_Letters", "[Vector][Vector3]")
 {
     Vector3d v3;
     v3.x = 69;
@@ -50,7 +50,7 @@ TEST_CASE(__FILE__"/Can_Set_Values_Letters", "[Vector3]")
 }
 
 // Tests if values can be set via array descriptors
-TEST_CASE(__FILE__"/Can_Set_Values_ArrayDescriptor", "[Vector3]")
+TEST_CASE(__FILE__"/Can_Set_Values_ArrayDescriptor", "[Vector][Vector3]")
 {
     Vector3d v3;
     v3[0] = 69;
@@ -65,7 +65,7 @@ TEST_CASE(__FILE__"/Can_Set_Values_ArrayDescriptor", "[Vector3]")
 }
 
 // Tests if values can be set via an initializer list
-TEST_CASE(__FILE__"/Can_Set_Values_InitializerList", "[Vector3]")
+TEST_CASE(__FILE__"/Can_Set_Values_InitializerList", "[Vector][Vector3]")
 {
     Vector3d v3 = { 69, 32, 16 };
 
@@ -77,7 +77,7 @@ TEST_CASE(__FILE__"/Can_Set_Values_InitializerList", "[Vector3]")
 }
 
 // Tests for vectors copied via the copy constructor to have the same values
-TEST_CASE(__FILE__"/Copy_Constructor_Same_Values", "[Vector3]")
+TEST_CASE(__FILE__"/Copy_Constructor_Same_Values", "[Vector][Vector3]")
 {
     Vector3d a(69, 32, 16);
     Vector3d b(a);
@@ -90,7 +90,7 @@ TEST_CASE(__FILE__"/Copy_Constructor_Same_Values", "[Vector3]")
 }
 
 // Tests for vectors copied via the equals operator to have the same values
-TEST_CASE(__FILE__"/Operator_Equals_Same_Values", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Equals_Same_Values", "[Vector][Vector3]")
 {
     Vector3d a(69, 32, 16);
     Vector3d b = a;
@@ -103,7 +103,7 @@ TEST_CASE(__FILE__"/Operator_Equals_Same_Values", "[Vector3]")
 }
 
 // Tests for vectors copied via the copy constructor to be modifyable without modifying the original object
-TEST_CASE(__FILE__"/Copy_Constructor_Independent", "[Vector3]")
+TEST_CASE(__FILE__"/Copy_Constructor_Independent", "[Vector][Vector3]")
 {
     Vector3d a(69, 32, 16);
     Vector3d b(a);
@@ -124,7 +124,7 @@ TEST_CASE(__FILE__"/Copy_Constructor_Independent", "[Vector3]")
 }
 
 // Tests for vectors copied via the equals operator to be modifyable without modifying the original object
-TEST_CASE(__FILE__"/Operator_Equals_Independent", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Equals_Independent", "[Vector][Vector3]")
 {
     Vector3d a(69, 32, 16);
     Vector3d b = a;
@@ -147,7 +147,7 @@ TEST_CASE(__FILE__"/Operator_Equals_Independent", "[Vector3]")
 // Tests if the dot product between two vectors angled 90 degrees from one another is 0. It should by definition be 0!
 // Dot products are commutative, so we'll check both directions.
 // This test tests all possible 90 degree setups with 1000x random lengths
-TEST_CASE(__FILE__"/DotProduct_90deg", "[Vector3]")
+TEST_CASE(__FILE__"/DotProduct_90deg", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 100; i++)
@@ -197,7 +197,7 @@ TEST_CASE(__FILE__"/DotProduct_90deg", "[Vector3]")
 
 // Test if the dot product is positive for two vectors angled less than 90 degrees from another
 // Dot products are commutative, so we'll check both directions.
-TEST_CASE(__FILE__"/DotProduct_LessThan90deg", "[Vector3]")
+TEST_CASE(__FILE__"/DotProduct_LessThan90deg", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -218,7 +218,7 @@ TEST_CASE(__FILE__"/DotProduct_LessThan90deg", "[Vector3]")
 
 // Test if the dot product is negative for two vectors angled greater than 90 degrees from another
 // Dot products are commutative, so we'll check both directions.
-TEST_CASE(__FILE__"/DotProduct_GreaterThan90deg", "[Vector3]")
+TEST_CASE(__FILE__"/DotProduct_GreaterThan90deg", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -237,7 +237,7 @@ TEST_CASE(__FILE__"/DotProduct_GreaterThan90deg", "[Vector3]")
 }
 
 // Tests that the dot product is correct for a known value
-TEST_CASE(__FILE__"/DotProduct_Oracle", "[Vector3]")
+TEST_CASE(__FILE__"/DotProduct_Oracle", "[Vector][Vector3]")
 {
     // Setup
     Vector3d a(-99, 199, -32);
@@ -253,7 +253,7 @@ TEST_CASE(__FILE__"/DotProduct_Oracle", "[Vector3]")
 }
 
 // Quick and dirty check if the useless int-method is working
-TEST_CASE(__FILE__"/DotProduct_Dirty_Int", "[Vector3]")
+TEST_CASE(__FILE__"/DotProduct_Dirty_Int", "[Vector][Vector3]")
 {
     Vector3i a;
     Vector3i b;
@@ -283,7 +283,7 @@ TEST_CASE(__FILE__"/DotProduct_Dirty_Int", "[Vector3]")
 }
 
 // Tests for the cross product between the same vector being 0
-TEST_CASE(__FILE__"/CrossProduct_Same_Vector_Is_0", "[Vector3]")
+TEST_CASE(__FILE__"/CrossProduct_Same_Vector_Is_0", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -302,7 +302,7 @@ TEST_CASE(__FILE__"/CrossProduct_Same_Vector_Is_0", "[Vector3]")
 }
 
 // Tests for the cross product between opposite vectors being 0
-TEST_CASE(__FILE__"/CrossProduct_Opposite_Vector_Is_0", "[Vector3]")
+TEST_CASE(__FILE__"/CrossProduct_Opposite_Vector_Is_0", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -322,7 +322,7 @@ TEST_CASE(__FILE__"/CrossProduct_Opposite_Vector_Is_0", "[Vector3]")
 }
 
 // Tests for known values
-TEST_CASE(__FILE__"/CrossProduct_KnownValues", "[Vector3]")
+TEST_CASE(__FILE__"/CrossProduct_KnownValues", "[Vector][Vector3]")
 {
     Vector3d a;
     Vector3d b;
@@ -366,7 +366,7 @@ TEST_CASE(__FILE__"/CrossProduct_KnownValues", "[Vector3]")
 }
 
 // Tests for known values, but with int vectors
-TEST_CASE(__FILE__"/CrossProduct_KnownValues_Int", "[Vector3]")
+TEST_CASE(__FILE__"/CrossProduct_KnownValues_Int", "[Vector][Vector3]")
 {
     Vector3i a;
     Vector3i b;
@@ -410,7 +410,7 @@ TEST_CASE(__FILE__"/CrossProduct_KnownValues_Int", "[Vector3]")
 }
 
 // Tests the SqrMagnitude method to work as expected with random numbers
-TEST_CASE(__FILE__"/SqrMagnitude", "[Vector3]")
+TEST_CASE(__FILE__"/SqrMagnitude", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -427,7 +427,7 @@ TEST_CASE(__FILE__"/SqrMagnitude", "[Vector3]")
 }
 
 // Tests the SqrMagnitude method to work as expected with random numbers, but with an int-vector
-TEST_CASE(__FILE__"/SqrMagnitude_Int", "[Vector3]")
+TEST_CASE(__FILE__"/SqrMagnitude_Int", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -444,14 +444,14 @@ TEST_CASE(__FILE__"/SqrMagnitude_Int", "[Vector3]")
 }
 
 // Tests for the length of the vector (0,0,0) being 0
-TEST_CASE(__FILE__"/Magnitude_Is_0_On_Vec0", "[Vector3]")
+TEST_CASE(__FILE__"/Magnitude_Is_0_On_Vec0", "[Vector][Vector3]")
 {
     REQUIRE(0.0 == Vector3d(0, 0, 0).Magnitude());
     return;
 }
 
 // Tests for a vector of a known length to actually return that
-TEST_CASE(__FILE__"/Magnitude_One_Axis_X", "[Vector3]")
+TEST_CASE(__FILE__"/Magnitude_One_Axis_X", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -470,7 +470,7 @@ TEST_CASE(__FILE__"/Magnitude_One_Axis_X", "[Vector3]")
 }
 
 // Tests for a vector of a known length to actually return that
-TEST_CASE(__FILE__"/Magnitude_One_Axis_Y", "[Vector3]")
+TEST_CASE(__FILE__"/Magnitude_One_Axis_Y", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -489,7 +489,7 @@ TEST_CASE(__FILE__"/Magnitude_One_Axis_Y", "[Vector3]")
 }
 
 // Tests for a vector of a known length to actually return that
-TEST_CASE(__FILE__"/Magnitude_One_Axis_Z", "[Vector3]")
+TEST_CASE(__FILE__"/Magnitude_One_Axis_Z", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -508,7 +508,7 @@ TEST_CASE(__FILE__"/Magnitude_One_Axis_Z", "[Vector3]")
 }
 
 // Tests for a known result
-TEST_CASE(__FILE__"/Magnitude", "[Vector3]")
+TEST_CASE(__FILE__"/Magnitude", "[Vector][Vector3]")
 {
     // Ya'll got more of 'dem digits?
     REQUIRE(426.14786166306174663986894302070140838623046875 == Vector3d(69, -420, 21).Magnitude());
@@ -516,7 +516,7 @@ TEST_CASE(__FILE__"/Magnitude", "[Vector3]")
 }
 
 // Tests for expected lerp result 0.00
-TEST_CASE(__FILE__"/Lerp_000", "[Vector3]")
+TEST_CASE(__FILE__"/Lerp_000", "[Vector][Vector3]")
 {
     Vector3d a(100, 1000, 10);
     Vector3d b(200, 4000, 100);
@@ -528,7 +528,7 @@ TEST_CASE(__FILE__"/Lerp_000", "[Vector3]")
 }
 
 // Tests for expected lerp result 0.25
-TEST_CASE(__FILE__"/Lerp_025", "[Vector3]")
+TEST_CASE(__FILE__"/Lerp_025", "[Vector][Vector3]")
 {
     Vector3d a(100, 1000, 10);
     Vector3d b(200, 4000, 100);
@@ -540,7 +540,7 @@ TEST_CASE(__FILE__"/Lerp_025", "[Vector3]")
 }
 
 // Tests for expected lerp result 0.50
-TEST_CASE(__FILE__"/Lerp_050", "[Vector3]")
+TEST_CASE(__FILE__"/Lerp_050", "[Vector][Vector3]")
 {
     Vector3d a(100, 1000, 10);
     Vector3d b(200, 4000, 100);
@@ -552,7 +552,7 @@ TEST_CASE(__FILE__"/Lerp_050", "[Vector3]")
 }
 
 // Tests for expected lerp result 0.75
-TEST_CASE(__FILE__"/Lerp_075", "[Vector3]")
+TEST_CASE(__FILE__"/Lerp_075", "[Vector][Vector3]")
 {
     Vector3d a(100, 1000, 10);
     Vector3d b(200, 4000, 100);
@@ -564,7 +564,7 @@ TEST_CASE(__FILE__"/Lerp_075", "[Vector3]")
 }
 
 // Tests for expected lerp result 1.00
-TEST_CASE(__FILE__"/Lerp_100", "[Vector3]")
+TEST_CASE(__FILE__"/Lerp_100", "[Vector][Vector3]")
 {
     Vector3d a(100, 1000, 10);
     Vector3d b(200, 4000, 100);
@@ -576,7 +576,7 @@ TEST_CASE(__FILE__"/Lerp_100", "[Vector3]")
 }
 
 // Tests lerpself
-TEST_CASE(__FILE__"/LerpSelf", "[Vector3]")
+TEST_CASE(__FILE__"/LerpSelf", "[Vector][Vector3]")
 {
     Vector3d a(100, 1000, 10);
     Vector3d b(200, 4000, 100);
@@ -589,7 +589,7 @@ TEST_CASE(__FILE__"/LerpSelf", "[Vector3]")
 }
 
 // Tests if an input vector of length 0 is handled correctly by the normalize method
-TEST_CASE(__FILE__"/Normalize_Length_Before_Is_0", "[Vector3]")
+TEST_CASE(__FILE__"/Normalize_Length_Before_Is_0", "[Vector][Vector3]")
 {
     Vector3d vec(0, 0, 0);
     vec.NormalizeSelf();
@@ -598,7 +598,7 @@ TEST_CASE(__FILE__"/Normalize_Length_Before_Is_0", "[Vector3]")
 }
 
 // Tests for any normalized vector to be of length 1
-TEST_CASE(__FILE__"/Normalize_Length_Is_1", "[Vector3]")
+TEST_CASE(__FILE__"/Normalize_Length_Is_1", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -621,7 +621,7 @@ TEST_CASE(__FILE__"/Normalize_Length_Is_1", "[Vector3]")
 }
 
 // Tests the normalize method with known values
-TEST_CASE(__FILE__"/Normalize_Oracle", "[Vector3]")
+TEST_CASE(__FILE__"/Normalize_Oracle", "[Vector][Vector3]")
 {
     // Setup
     Vector3d v(3.2, -5.3, 9.88);
@@ -635,7 +635,7 @@ TEST_CASE(__FILE__"/Normalize_Oracle", "[Vector3]")
 }
 
 // Tests for a normalized vector to still point in the exact same direction
-TEST_CASE(__FILE__"/Normalize_Direction_Stays_Unaffected", "[Vector3]")
+TEST_CASE(__FILE__"/Normalize_Direction_Stays_Unaffected", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -665,7 +665,7 @@ TEST_CASE(__FILE__"/Normalize_Direction_Stays_Unaffected", "[Vector3]")
 
 // Kinda dumb method, but ok lol
 // DON'T NORMALIZE INT-VECTORS WHAT IS WRONG WITH YOU
-TEST_CASE(__FILE__"/Normalized_Int_Vector_Is_0", "[Vector3]")
+TEST_CASE(__FILE__"/Normalized_Int_Vector_Is_0", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -684,7 +684,7 @@ TEST_CASE(__FILE__"/Normalized_Int_Vector_Is_0", "[Vector3]")
 }
 
 // Tests that NormalizeSelf() results in the same as Normalize()
-TEST_CASE(__FILE__"/NormalizeSelf_IsSameAs_Normalize", "[Vector3]")
+TEST_CASE(__FILE__"/NormalizeSelf_IsSameAs_Normalize", "[Vector][Vector3]")
 {
     // Run test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -701,7 +701,7 @@ TEST_CASE(__FILE__"/NormalizeSelf_IsSameAs_Normalize", "[Vector3]")
 }
 
 // Tests for the VectorScale() method to work
-TEST_CASE(__FILE__"/VectorScale", "[Vector3]")
+TEST_CASE(__FILE__"/VectorScale", "[Vector][Vector3]")
 {
     // Run test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -729,7 +729,7 @@ TEST_CASE(__FILE__"/VectorScale", "[Vector3]")
 }
 
 // Tests for operator- (unary) to work
-TEST_CASE(__FILE__"/Operator_Unary_Negative", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Unary_Negative", "[Vector][Vector3]")
 {
     const Vector3d v(29, -5, 35);
 
@@ -739,7 +739,7 @@ TEST_CASE(__FILE__"/Operator_Unary_Negative", "[Vector3]")
 }
 
 // Tests for operator+ to work as expected
-TEST_CASE(__FILE__"/Operator_Add", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Add", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -761,7 +761,7 @@ TEST_CASE(__FILE__"/Operator_Add", "[Vector3]")
 }
 
 // Tests for operator+= to work as expected
-TEST_CASE(__FILE__"/Operator_Add_Equals", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Add_Equals", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -783,7 +783,7 @@ TEST_CASE(__FILE__"/Operator_Add_Equals", "[Vector3]")
 }
 
 // Tests for operator- to work as expected
-TEST_CASE(__FILE__"/Operator_Sub", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Sub", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -805,7 +805,7 @@ TEST_CASE(__FILE__"/Operator_Sub", "[Vector3]")
 }
 
 // Tests for operator-= to work as expected
-TEST_CASE(__FILE__"/Operator_Sub_Equals", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Sub_Equals", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -827,7 +827,7 @@ TEST_CASE(__FILE__"/Operator_Sub_Equals", "[Vector3]")
 }
 
 // Tests for operator* to work as expected
-TEST_CASE(__FILE__"/Operator_Mult", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Mult", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -846,7 +846,7 @@ TEST_CASE(__FILE__"/Operator_Mult", "[Vector3]")
 }
 
 // Tests for operator*= to work as expected
-TEST_CASE(__FILE__"/Operator_Mult_Equals", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Mult_Equals", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -866,7 +866,7 @@ TEST_CASE(__FILE__"/Operator_Mult_Equals", "[Vector3]")
 }
 
 // Tests for operator/ to work as expected
-TEST_CASE(__FILE__"/Operator_Div", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Div", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -885,7 +885,7 @@ TEST_CASE(__FILE__"/Operator_Div", "[Vector3]")
 }
 
 // Tests for operator/= to work as expected
-TEST_CASE(__FILE__"/Operator_Div_Equals", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Div_Equals", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -905,7 +905,7 @@ TEST_CASE(__FILE__"/Operator_Div_Equals", "[Vector3]")
 }
 
 // Tests for operator== to work as expected
-TEST_CASE(__FILE__"/Operator_Equals", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Equals", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 10000; i++)
@@ -930,7 +930,7 @@ TEST_CASE(__FILE__"/Operator_Equals", "[Vector3]")
 }
 
 // Tests for operator!= to work as expected
-TEST_CASE(__FILE__"/Operator_Not_Equals", "[Vector3]")
+TEST_CASE(__FILE__"/Operator_Not_Equals", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 10000; i++)
@@ -955,7 +955,7 @@ TEST_CASE(__FILE__"/Operator_Not_Equals", "[Vector3]")
 }
 
 // Tests for matrix multiplication working regarding rotation
-TEST_CASE(__FILE__"/MatrixMult_Rotate_Yaw", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Rotate_Yaw", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(69, 32, 16);
@@ -993,7 +993,7 @@ TEST_CASE(__FILE__"/MatrixMult_Rotate_Yaw", "[Vector3]")
 }
 
 // Tests for matrix multiplication working regarding rotation
-TEST_CASE(__FILE__"/MatrixMult_Rotate_Roll", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Rotate_Roll", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(69, 32, 16);
@@ -1031,7 +1031,7 @@ TEST_CASE(__FILE__"/MatrixMult_Rotate_Roll", "[Vector3]")
 }
 
 // Tests for matrix multiplication working regarding rotation
-TEST_CASE(__FILE__"/MatrixMult_Rotate_Pitch", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Rotate_Pitch", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(69, 32, 16);
@@ -1069,7 +1069,7 @@ TEST_CASE(__FILE__"/MatrixMult_Rotate_Pitch", "[Vector3]")
 }
 
 // Tests if rotating a vector (1,1,1) by (45,45,45) eulers works
-TEST_CASE(__FILE__"/MatrixMult_Rotate_Unit_Combined", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Rotate_Unit_Combined", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(1, 1, 1);
@@ -1095,7 +1095,7 @@ TEST_CASE(__FILE__"/MatrixMult_Rotate_Unit_Combined", "[Vector3]")
 }
 
 // Tests if rotating a vector (69,32,16) by (45,45,45) eulers works
-TEST_CASE(__FILE__"/MatrixMult_Rotate_HalfUnit_Combined", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Rotate_HalfUnit_Combined", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(69, 32, 16);
@@ -1121,7 +1121,7 @@ TEST_CASE(__FILE__"/MatrixMult_Rotate_HalfUnit_Combined", "[Vector3]")
 }
 
 // Tests if rotating a vector (69,32,16) by (45,45,45) eulers works
-TEST_CASE(__FILE__"/MatrixMult_Rotate_Combined", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Rotate_Combined", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(69, 32, 16);
@@ -1147,7 +1147,7 @@ TEST_CASE(__FILE__"/MatrixMult_Rotate_Combined", "[Vector3]")
 }
 
 // Tests if matrix scaling works ( x axis only )
-TEST_CASE(__FILE__"/MatrixMult_Scale_X", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Scale_X", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(5, 6, 7);
@@ -1169,7 +1169,7 @@ TEST_CASE(__FILE__"/MatrixMult_Scale_X", "[Vector3]")
 }
 
 // Tests if matrix scaling works ( y axis only )
-TEST_CASE(__FILE__"/MatrixMult_Scale_Y", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Scale_Y", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(5, 6, 7);
@@ -1191,7 +1191,7 @@ TEST_CASE(__FILE__"/MatrixMult_Scale_Y", "[Vector3]")
 }
 
 // Tests if matrix scaling works ( z axis only )
-TEST_CASE(__FILE__"/MatrixMult_Scale_Z", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Scale_Z", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(5, 6, 7);
@@ -1213,7 +1213,7 @@ TEST_CASE(__FILE__"/MatrixMult_Scale_Z", "[Vector3]")
 }
 
 // Tests if matrix scaling works ( all axes )
-TEST_CASE(__FILE__"/MatrixMult_Scale_Combined", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Scale_Combined", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(5, 6, 7);
@@ -1235,7 +1235,7 @@ TEST_CASE(__FILE__"/MatrixMult_Scale_Combined", "[Vector3]")
 }
 
 // Tests if translation via matrix multiplication works
-TEST_CASE(__FILE__"/MatrixMult_Translation", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Translation", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(5, 6, 7);
@@ -1257,7 +1257,7 @@ TEST_CASE(__FILE__"/MatrixMult_Translation", "[Vector3]")
 }
 
 // Tests the multiplication operator (*) with a simple matrix. All other tests used the * operator (without the '=')
-TEST_CASE(__FILE__"/MatrixMult_Not_Using_MultEqualsOperator", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Not_Using_MultEqualsOperator", "[Vector][Vector3]")
 {
     // Create vector
     Vector3d vec(5.1, 6.4, 7.99);
@@ -1289,7 +1289,7 @@ TEST_CASE(__FILE__"/MatrixMult_Not_Using_MultEqualsOperator", "[Vector3]")
 }
 
 // A simple matrix multiplication tested on an int vector
-TEST_CASE(__FILE__"/MatrixMult_Dirty_Int_Check", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Dirty_Int_Check", "[Vector][Vector3]")
 {
     // Create vector
     Vector3i vec(5, 6, 7);
@@ -1315,7 +1315,7 @@ TEST_CASE(__FILE__"/MatrixMult_Dirty_Int_Check", "[Vector3]")
 }
 
 // Tests the multiplication operator (*) with a simple matrix. All other tests used the * operator (without the '=')
-TEST_CASE(__FILE__"/MatrixMult_Dirty_Int_Check_Not_Using_MultEqualsOperator", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Dirty_Int_Check_Not_Using_MultEqualsOperator", "[Vector][Vector3]")
 {
     // Create vector
     Vector3i vec(5, 6, 7);
@@ -1341,7 +1341,7 @@ TEST_CASE(__FILE__"/MatrixMult_Dirty_Int_Check_Not_Using_MultEqualsOperator", "[
 }
 
 //This tests the multiplication equals operator (*=) procedurally
-TEST_CASE(__FILE__"/MatrixMult_Equals_Procedural", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Equals_Procedural", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -1385,7 +1385,7 @@ TEST_CASE(__FILE__"/MatrixMult_Equals_Procedural", "[Vector3]")
 }
 
 //This tests the multiplication operator (*) procedurally
-TEST_CASE(__FILE__"/MatrixMult_Procedural", "[Vector3]")
+TEST_CASE(__FILE__"/MatrixMult_Procedural", "[Vector][Vector3]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -1429,7 +1429,7 @@ TEST_CASE(__FILE__"/MatrixMult_Procedural", "[Vector3]")
 }
 
 // Tests loose comparison via Vector3d::Similar -> true
-TEST_CASE(__FILE__"/Similar_True", "[Vector3]")
+TEST_CASE(__FILE__"/Similar_True", "[Vector][Vector3]")
 {
     REQUIRE(
         Vector3d(0.00000000000000000000001, -6.6666666666666666666666666666, 9.9999999999999999999999999999).Similar(
@@ -1439,7 +1439,7 @@ TEST_CASE(__FILE__"/Similar_True", "[Vector3]")
 }
 
 // Tests loose comparison via Vector3d::Similar -> false
-TEST_CASE(__FILE__"/Similar_False", "[Vector3]")
+TEST_CASE(__FILE__"/Similar_False", "[Vector][Vector3]")
 {
     REQUIRE_FALSE(
         Vector3d(0.00000000000000000000001, -6.6666666666666666666666666666, 9.9999999999999999999999999999).Similar(
@@ -1449,7 +1449,7 @@ TEST_CASE(__FILE__"/Similar_False", "[Vector3]")
 }
 
 // Tests that the move constructor works
-TEST_CASE(__FILE__"/Move_Constructor", "[Vector3]")
+TEST_CASE(__FILE__"/Move_Constructor", "[Vector][Vector3]")
 {
     Vector3d a(1,2,3);
     Vector3d b(std::move(a));
@@ -1462,7 +1462,7 @@ TEST_CASE(__FILE__"/Move_Constructor", "[Vector3]")
 }
 
 // Tests that the move operator works
-TEST_CASE(__FILE__"/Move_Operator", "[Vector3]")
+TEST_CASE(__FILE__"/Move_Operator", "[Vector][Vector3]")
 {
     Vector3d a(1, 2, 3);
     Vector3d b = std::move(a);

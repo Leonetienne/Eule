@@ -13,7 +13,7 @@ namespace {
 }
 
 // Tests if all values are 0 after initialization via default constructor
-TEST_CASE(__FILE__"/New_Vector_All_0", "[Vector4]")
+TEST_CASE(__FILE__"/New_Vector_All_0", "[Vector][Vector4]")
 {
     const Vector4d v4;
 
@@ -26,7 +26,7 @@ TEST_CASE(__FILE__"/New_Vector_All_0", "[Vector4]")
 }
 
 // Tests if values can be set via the constructor
-TEST_CASE(__FILE__"/Can_Set_Values_Constructor", "[Vector4]")
+TEST_CASE(__FILE__"/Can_Set_Values_Constructor", "[Vector][Vector4]")
 {
     const Vector4d v4(69, 32, 16, 10);
 
@@ -39,7 +39,7 @@ TEST_CASE(__FILE__"/Can_Set_Values_Constructor", "[Vector4]")
 }
 
 // Tests if values can be set via letters
-TEST_CASE(__FILE__"/Can_Set_Values_Letters", "[Vector4]")
+TEST_CASE(__FILE__"/Can_Set_Values_Letters", "[Vector][Vector4]")
 {
     Vector4d v4;
     v4.x = 69;
@@ -56,7 +56,7 @@ TEST_CASE(__FILE__"/Can_Set_Values_Letters", "[Vector4]")
 }
 
 // Tests if values can be set via array descriptors
-TEST_CASE(__FILE__"/Can_Set_Values_ArrayDescriptor", "[Vector4]")
+TEST_CASE(__FILE__"/Can_Set_Values_ArrayDescriptor", "[Vector][Vector4]")
 {
     Vector4d v4;
     v4[0] = 69;
@@ -73,7 +73,7 @@ TEST_CASE(__FILE__"/Can_Set_Values_ArrayDescriptor", "[Vector4]")
 }
 
 // Tests if values can be set via an initializer list
-TEST_CASE(__FILE__"/Can_Set_Values_InitializerList", "[Vector4]")
+TEST_CASE(__FILE__"/Can_Set_Values_InitializerList", "[Vector][Vector4]")
 {
     const Vector4d v4 = { 69, 32, 16, 10 };
 
@@ -86,7 +86,7 @@ TEST_CASE(__FILE__"/Can_Set_Values_InitializerList", "[Vector4]")
 }
 
 // Tests for vectors copied via the copy constructor to have the same values
-TEST_CASE(__FILE__"/Copy_Constructor_Same_Values", "[Vector4]")
+TEST_CASE(__FILE__"/Copy_Constructor_Same_Values", "[Vector][Vector4]")
 {
     const Vector4d a(69, 32, 16, 10);
     Vector4d b(a);
@@ -100,7 +100,7 @@ TEST_CASE(__FILE__"/Copy_Constructor_Same_Values", "[Vector4]")
 }
 
 // Tests for vectors copied via the equals operator to have the same values
-TEST_CASE(__FILE__"/Operator_Equals_Same_Values", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Equals_Same_Values", "[Vector][Vector4]")
 {
     const Vector4d a(69, 32, 16, 10);
     Vector4d b = a;
@@ -114,7 +114,7 @@ TEST_CASE(__FILE__"/Operator_Equals_Same_Values", "[Vector4]")
 }
 
 // Tests for vectors copied via the copy constructor to be modifyable without modifying the original object
-TEST_CASE(__FILE__"/Copy_Constructor_Independent", "[Vector4]")
+TEST_CASE(__FILE__"/Copy_Constructor_Independent", "[Vector][Vector4]")
 {
     const Vector4d a(69, 32, 16, 10);
     Vector4d b(a);
@@ -138,7 +138,7 @@ TEST_CASE(__FILE__"/Copy_Constructor_Independent", "[Vector4]")
 }
 
 // Tests for vectors copied via the equals operator to be modifyable without modifying the original object
-TEST_CASE(__FILE__"/Operator_Equals_Independent", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Equals_Independent", "[Vector][Vector4]")
 {
     const Vector4d a(69, 32, 16, 10);
     Vector4d b = a;
@@ -162,7 +162,7 @@ TEST_CASE(__FILE__"/Operator_Equals_Independent", "[Vector4]")
 }
 
 // Tests the SqrMagnitude method to work as expected with random numbers
-TEST_CASE(__FILE__"/SqrMagnitude", "[Vector4]")
+TEST_CASE(__FILE__"/SqrMagnitude", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -180,14 +180,14 @@ TEST_CASE(__FILE__"/SqrMagnitude", "[Vector4]")
 }
 
 // Tests for the length of the vector (0,0,0,0) being 0
-TEST_CASE(__FILE__"/Magnitude_Is_0_On_Vec0", "[Vector4]")
+TEST_CASE(__FILE__"/Magnitude_Is_0_On_Vec0", "[Vector][Vector4]")
 {
     REQUIRE(0.0 == Vector4d(0, 0, 0, 0).Magnitude());
     return;
 }
 
 // Tests for a vector of a known length to actually return that
-TEST_CASE(__FILE__"/Magnitude_One_Axis_X", "[Vector4]")
+TEST_CASE(__FILE__"/Magnitude_One_Axis_X", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -201,7 +201,7 @@ TEST_CASE(__FILE__"/Magnitude_One_Axis_X", "[Vector4]")
 }
 
 // Tests for a vector of a known length to actually return that
-TEST_CASE(__FILE__"/Magnitude_One_Axis_Y", "[Vector4]")
+TEST_CASE(__FILE__"/Magnitude_One_Axis_Y", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -215,7 +215,7 @@ TEST_CASE(__FILE__"/Magnitude_One_Axis_Y", "[Vector4]")
 }
 
 // Tests for a vector of a known length to actually return that
-TEST_CASE(__FILE__"/Magnitude_One_Axis_Z", "[Vector4]")
+TEST_CASE(__FILE__"/Magnitude_One_Axis_Z", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -229,7 +229,7 @@ TEST_CASE(__FILE__"/Magnitude_One_Axis_Z", "[Vector4]")
 }
 
 // Tests for a vector of a known length to actually return that
-TEST_CASE(__FILE__"/Magnitude_One_Axis_W", "[Vector4]")
+TEST_CASE(__FILE__"/Magnitude_One_Axis_W", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -243,7 +243,7 @@ TEST_CASE(__FILE__"/Magnitude_One_Axis_W", "[Vector4]")
 }
 
 // Tests for a known result
-TEST_CASE(__FILE__"/Magnitude", "[Vector4]")
+TEST_CASE(__FILE__"/Magnitude", "[Vector][Vector4]")
 {
     // Ya'll got more of 'dem digits?
     REQUIRE(78.5746530377322045524124405346810817718505859375 == Vector4d(-23.76, 15.82, 66.75, 30.06).Magnitude());
@@ -251,7 +251,7 @@ TEST_CASE(__FILE__"/Magnitude", "[Vector4]")
 }
 
 // Tests for expected lerp result 0.00
-TEST_CASE(__FILE__"/Lerp_000", "[Vector4]")
+TEST_CASE(__FILE__"/Lerp_000", "[Vector][Vector4]")
 {
     const Vector4d a(100, 1000, 10, -200);
     const Vector4d b(200, 4000, 100, 200);
@@ -263,7 +263,7 @@ TEST_CASE(__FILE__"/Lerp_000", "[Vector4]")
 }
 
 // Tests for expected lerp result 0.25
-TEST_CASE(__FILE__"/Lerp_025", "[Vector4]")
+TEST_CASE(__FILE__"/Lerp_025", "[Vector][Vector4]")
 {
     const Vector4d a(100, 1000, 10, -200);
     const Vector4d b(200, 4000, 100, 200);
@@ -275,7 +275,7 @@ TEST_CASE(__FILE__"/Lerp_025", "[Vector4]")
 }
 
 // Tests for expected lerp result 0.50
-TEST_CASE(__FILE__"/Lerp_050", "[Vector4]")
+TEST_CASE(__FILE__"/Lerp_050", "[Vector][Vector4]")
 {
     const Vector4d a(100, 1000, 10, -200);
     const Vector4d b(200, 4000, 100, 200);
@@ -287,7 +287,7 @@ TEST_CASE(__FILE__"/Lerp_050", "[Vector4]")
 }
 
 // Tests for expected lerp result 0.75
-TEST_CASE(__FILE__"/Lerp_075", "[Vector4]")
+TEST_CASE(__FILE__"/Lerp_075", "[Vector][Vector4]")
 {
     const Vector4d a(100, 1000, 10, -200);
     const Vector4d b(200, 4000, 100, 200);
@@ -299,7 +299,7 @@ TEST_CASE(__FILE__"/Lerp_075", "[Vector4]")
 }
 
 // Tests for expected lerp result 1.00
-TEST_CASE(__FILE__"/Lerp_100", "[Vector4]")
+TEST_CASE(__FILE__"/Lerp_100", "[Vector][Vector4]")
 {
     const Vector4d a(100, 1000, 10, -200);
     const Vector4d b(200, 4000, 100, 200);
@@ -311,7 +311,7 @@ TEST_CASE(__FILE__"/Lerp_100", "[Vector4]")
 }
 
 // Tests lerpself
-TEST_CASE(__FILE__"/LerpSelf", "[Vector4]")
+TEST_CASE(__FILE__"/LerpSelf", "[Vector][Vector4]")
 {
     Vector4d a(100, 1000, 10, -200);
     Vector4d b(200, 4000, 100, 200);
@@ -324,7 +324,7 @@ TEST_CASE(__FILE__"/LerpSelf", "[Vector4]")
 }
 
 // Tests if an input vector of length 0 is handled correctly by the normalize method
-TEST_CASE(__FILE__"/Normalize_Length_Before_Is_0", "[Vector4]")
+TEST_CASE(__FILE__"/Normalize_Length_Before_Is_0", "[Vector][Vector4]")
 {
     Vector4d vec(0, 0, 0, 0);
     vec.NormalizeSelf();
@@ -333,7 +333,7 @@ TEST_CASE(__FILE__"/Normalize_Length_Before_Is_0", "[Vector4]")
 }
 
 // Tests for any normalized vector to be of length 1
-TEST_CASE(__FILE__"/Normalize_Length_Is_1", "[Vector4]")
+TEST_CASE(__FILE__"/Normalize_Length_Is_1", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -357,7 +357,7 @@ TEST_CASE(__FILE__"/Normalize_Length_Is_1", "[Vector4]")
 }
 
 // Tests the normalize method with known values
-TEST_CASE(__FILE__"/Normalize_Oracle", "[Vector4]")
+TEST_CASE(__FILE__"/Normalize_Oracle", "[Vector][Vector4]")
 {
     // Setup
     Vector4d v(3.2, -5.3, 9.88, 69.420);
@@ -372,7 +372,7 @@ TEST_CASE(__FILE__"/Normalize_Oracle", "[Vector4]")
 
 // Kinda dumb method, but ok lol
 // DON'T NORMALIZE INT-VECTORS WHAT IS WRONG WITH YOU
-TEST_CASE(__FILE__"/Normalized_Int_Vector_Is_0", "[Vector4]")
+TEST_CASE(__FILE__"/Normalized_Int_Vector_Is_0", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -392,7 +392,7 @@ TEST_CASE(__FILE__"/Normalized_Int_Vector_Is_0", "[Vector4]")
 }
 
 // Tests that NormalizeSelf() results in the same as Normalize()
-TEST_CASE(__FILE__"/NormalizeSelf_IsSameAs_Normalize", "[Vector4]")
+TEST_CASE(__FILE__"/NormalizeSelf_IsSameAs_Normalize", "[Vector][Vector4]")
 {
     // Run test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -409,7 +409,7 @@ TEST_CASE(__FILE__"/NormalizeSelf_IsSameAs_Normalize", "[Vector4]")
 }
 
 // Tests for the VectorScale() method to work
-TEST_CASE(__FILE__"/VectorScale", "[Vector4]")
+TEST_CASE(__FILE__"/VectorScale", "[Vector][Vector4]")
 {
     // Run test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -440,7 +440,7 @@ TEST_CASE(__FILE__"/VectorScale", "[Vector4]")
 }
 
 // Tests for operator- (unary) to work
-TEST_CASE(__FILE__"/Operator_Unary_Negative", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Unary_Negative", "[Vector][Vector4]")
 {
     const Vector4d v(29, -5, 35, -69);
 
@@ -450,7 +450,7 @@ TEST_CASE(__FILE__"/Operator_Unary_Negative", "[Vector4]")
 }
 
 // Tests for operator+ to work as expected
-TEST_CASE(__FILE__"/Operator_Add", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Add", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -474,7 +474,7 @@ TEST_CASE(__FILE__"/Operator_Add", "[Vector4]")
 }
 
 // Tests for operator+= to work as expected
-TEST_CASE(__FILE__"/Operator_Add_Equals", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Add_Equals", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -498,7 +498,7 @@ TEST_CASE(__FILE__"/Operator_Add_Equals", "[Vector4]")
 }
 
 // Tests for operator- to work as expected
-TEST_CASE(__FILE__"/Operator_Sub", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Sub", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -522,7 +522,7 @@ TEST_CASE(__FILE__"/Operator_Sub", "[Vector4]")
 }
 
 // Tests for operator-= to work as expected
-TEST_CASE(__FILE__"/Operator_Sub_Equals", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Sub_Equals", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -546,7 +546,7 @@ TEST_CASE(__FILE__"/Operator_Sub_Equals", "[Vector4]")
 }
 
 // Tests for operator* to work as expected
-TEST_CASE(__FILE__"/Operator_Mult", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Mult", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -566,7 +566,7 @@ TEST_CASE(__FILE__"/Operator_Mult", "[Vector4]")
 }
 
 // Tests for operator*= to work as expected
-TEST_CASE(__FILE__"/Operator_Mult_Equals", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Mult_Equals", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -587,7 +587,7 @@ TEST_CASE(__FILE__"/Operator_Mult_Equals", "[Vector4]")
 }
 
 // Tests for operator/ to work as expected
-TEST_CASE(__FILE__"/Operator_Div", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Div", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -607,7 +607,7 @@ TEST_CASE(__FILE__"/Operator_Div", "[Vector4]")
 }
 
 // Tests for operator/= to work as expected
-TEST_CASE(__FILE__"/Operator_Div_Equals", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Div_Equals", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -628,7 +628,7 @@ TEST_CASE(__FILE__"/Operator_Div_Equals", "[Vector4]")
 }
 
 // Tests for operator== to work as expected
-TEST_CASE(__FILE__"/Operator_Equals", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Equals", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -655,7 +655,7 @@ TEST_CASE(__FILE__"/Operator_Equals", "[Vector4]")
 }
 
 // Tests for operator!= to work as expected
-TEST_CASE(__FILE__"/Operator_Not_Equals", "[Vector4]")
+TEST_CASE(__FILE__"/Operator_Not_Equals", "[Vector][Vector4]")
 {
     // Test 1000 times
     for (std::size_t i = 0; i < 1000; i++)
@@ -682,7 +682,7 @@ TEST_CASE(__FILE__"/Operator_Not_Equals", "[Vector4]")
 }
 
 // Tests matrix multiplication with the multiplication operator (*) with a known result
-TEST_CASE(__FILE__"/MatrixMult", "[Vector4]")
+TEST_CASE(__FILE__"/MatrixMult", "[Vector][Vector4]")
 {
     Vector4d vec(117, 12, -36, 500);
 
@@ -700,7 +700,7 @@ TEST_CASE(__FILE__"/MatrixMult", "[Vector4]")
 }
 
 // Tests matrix multiplication with the multiplication equals operator (*=) with a known result
-TEST_CASE(__FILE__"/MatrixMult_Equals", "[Vector4]")
+TEST_CASE(__FILE__"/MatrixMult_Equals", "[Vector][Vector4]")
 {
     Vector4d vec(117, 12, -36, 500);
 
@@ -718,7 +718,7 @@ TEST_CASE(__FILE__"/MatrixMult_Equals", "[Vector4]")
 }
 
 // Tests matrix multiplication with the multiplication operator (*) with a known result, but with an int-vector
-TEST_CASE(__FILE__"/MatrixMult_Int", "[Vector4]")
+TEST_CASE(__FILE__"/MatrixMult_Int", "[Vector][Vector4]")
 {
     Vector4i vec(112, -420, 80085, 1);
 
@@ -736,7 +736,7 @@ TEST_CASE(__FILE__"/MatrixMult_Int", "[Vector4]")
 }
 
 // Tests matrix multiplication with the multiplication equals operator (*=) with a known result, but with an int - vector
-TEST_CASE(__FILE__"/MatrixMult_Equals_Int", "[Vector4]")
+TEST_CASE(__FILE__"/MatrixMult_Equals_Int", "[Vector][Vector4]")
 {
     Vector4i vec(112, -420, 80085, 1);
 
@@ -754,7 +754,7 @@ TEST_CASE(__FILE__"/MatrixMult_Equals_Int", "[Vector4]")
 }
 
 // Tests loose comparison via Vector4d::Similar -> true
-TEST_CASE(__FILE__"/Loose_Comparison_True_Vector4d", "[Vector4]")
+TEST_CASE(__FILE__"/Loose_Comparison_True_Vector4d", "[Vector][Vector4]")
 {
     REQUIRE(
         Vector4d(0.00000000000000000000001, -6.6666666666666666666666666666, 9.9999999999999999999999999999, -3.3333333333333333333333333333333333333).Similar(
@@ -764,7 +764,7 @@ TEST_CASE(__FILE__"/Loose_Comparison_True_Vector4d", "[Vector4]")
 }
 
 // Tests loose comparison via Vector4d::Similar -> false
-TEST_CASE(__FILE__"/Loose_Comparison_False_Vector4d", "[Vector4]")
+TEST_CASE(__FILE__"/Loose_Comparison_False_Vector4d", "[Vector][Vector4]")
 {
     REQUIRE_FALSE(
         Vector4d(0.00000000000000000000001, -6.6666666666666666666666666666, 9.9999999999999999999999999999, -3.3333333333333333333333333333333333333).Similar(
@@ -774,7 +774,7 @@ TEST_CASE(__FILE__"/Loose_Comparison_False_Vector4d", "[Vector4]")
 }
 
 // Tests that the move constructor works
-TEST_CASE(__FILE__"/Move_Constructor", "[Vector4]")
+TEST_CASE(__FILE__"/Move_Constructor", "[Vector][Vector4]")
 {
     Vector4d a(1, 2, 3, 4);
     Vector4d b(std::move(a));
@@ -788,7 +788,7 @@ TEST_CASE(__FILE__"/Move_Constructor", "[Vector4]")
 }
 
 // Tests that the move operator works
-TEST_CASE(__FILE__"/Move_Operator", "[Vector4]")
+TEST_CASE(__FILE__"/Move_Operator", "[Vector][Vector4]")
 {
     Vector4d a(1, 2, 3, 4);
     Vector4d b = std::move(a);
