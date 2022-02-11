@@ -10,6 +10,8 @@ add_executable(Tests
         Catch2.h
         main.cpp
         Math__Mod.cpp
+        Math__Oscillate.cpp
+        Math__Abs.cpp
 )
 
 target_link_libraries(Tests Eule)
