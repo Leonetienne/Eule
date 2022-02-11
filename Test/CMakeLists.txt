@@ -13,6 +13,7 @@ add_executable(Tests
         Math__Oscillate.cpp
         Math__Abs.cpp
         Math__Clamp.cpp
+        Math__Lerp.cpp
 )
 
 target_link_libraries(Tests Eule)
