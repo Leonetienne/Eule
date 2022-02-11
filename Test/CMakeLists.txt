@@ -22,6 +22,7 @@ add_executable(Tests
         Matrix4x4.cpp
         Vector2.cpp
         Vector3.cpp
+        Vector4.cpp
 )
 
 target_link_libraries(Tests Eule)
