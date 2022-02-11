@@ -14,6 +14,7 @@ add_executable(Tests
         Math__Abs.cpp
         Math__Clamp.cpp
         Math__Lerp.cpp
+        Math__Max.cpp
 )
 
 target_link_libraries(Tests Eule)
