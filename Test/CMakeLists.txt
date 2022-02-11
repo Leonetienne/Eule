@@ -25,6 +25,7 @@ add_executable(Tests
         Vector4.cpp
         Quaternion.cpp
         Random__RandomFloat.cpp
+        VectorConversion.cpp
 )
 
 target_link_libraries(Tests Eule)
