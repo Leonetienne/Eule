@@ -10,7 +10,6 @@ namespace {
     static std::mt19937 rng = std::mt19937((std::random_device())());
 }
 
-
 // Tests that a freshly created matrix is an identity matrix
 TEST_CASE(__FILE__"/New_Matrix_Is_Identity", "[Matrix4x4]")
 {

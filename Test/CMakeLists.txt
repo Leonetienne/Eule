@@ -20,6 +20,7 @@ add_executable(Tests
         Math__Min.cpp
         Math__Similar.cpp
         Matrix4x4.cpp
+        Vector3.cpp
 )
 
 target_link_libraries(Tests Eule)
