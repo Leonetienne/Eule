@@ -294,7 +294,6 @@ void Vector2<double>::NormalizeSelf()
 template<>
 void Vector2<int>::NormalizeSelf()
 {
-	std::cerr << "Stop normalizing int-vectors!!" << std::endl;
 	x = 0;
 	y = 0;
 

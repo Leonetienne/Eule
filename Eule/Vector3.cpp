@@ -222,7 +222,6 @@ namespace Eule {
     template<>
     void Vector3<int>::NormalizeSelf()
     {
-        std::cerr << "Stop normalizing int-vectors!!" << std::endl;
         x = 0;
         y = 0;
         z = 0;
@@ -239,7 +238,7 @@ namespace Eule {
                 (::Eule::Math::Similar(x, other.x, epsilon)) &&
                 (::Eule::Math::Similar(y, other.y, epsilon)) &&
                 (::Eule::Math::Similar(z, other.z, epsilon))
-                ;
+        ;
     }
 
     template<typename T>
