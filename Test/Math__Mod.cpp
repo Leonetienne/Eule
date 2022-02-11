@@ -1,8 +1,7 @@
-#include "CppUnitTest.h"
-#include "../Eule/Math.h"
+#include "Catch2.h"
+#include <Eule/Math.h>
 #include <stdexcept>
 
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace Eule;
 
 /** Equivalence classes:
@@ -20,64 +19,53 @@ using namespace Eule;
 *		-- a = 0 && b = 0
 */
 
-namespace _Math
+// a > 0 && b > 0
+TEST_CASE(__FILE__"/a_gt_0_and_b_gt_0", "[Math][Mod]")
 {
-	TEST_CLASS(_Mod)
-	{
-	public:
-		// a > 0 && b > 0
-		TEST_METHOD(a_gt_0_and_b_gt_0)
-		{
-			Assert::AreEqual(7, Math::Mod(199, 32));
-			return;
-		}
+    REQUIRE(Math::Mod(199, 32) == 7);
+    return;
+}
 
-		// a < 0 && b > 0
-		TEST_METHOD(a_lt_0_and_b_gt_0)
-		{
-			Assert::AreEqual(25, Math::Mod(-199, 32));
-			return;
-		}
+// a < 0 && b > 0
+TEST_CASE(__FILE__"/a_lt_0_and_b_gt_0", "[Math][Mod]")
+{
+    REQUIRE(Math::Mod(-199, 32) == 25);
+    return;
+}
 
-		// a > 0 && b < 0
-		TEST_METHOD(a_gt_0_and_b_lt_0)
-		{
-			Assert::AreEqual(-25, Math::Mod(199, -32));
-			return;
-		}
+// a > 0 && b < 0
+TEST_CASE(__FILE__"/a_gt_0_and_b_lt_0", "[Math][Mod]")
+{
+    REQUIRE(Math::Mod(199, -32) == -25);
+    return;
+}
 
-		// a > 0 && b = 0
-		TEST_METHOD(a_gt_0_and_b_eq_0)
-		{
-			// Exppect divide-by-zero
-			Assert::ExpectException<std::logic_error&>([]() {
-				Assert::AreEqual(0, Math::Mod(199, 0));
-			});
-			return;
-		}
+// a > 0 && b = 0
+TEST_CASE(__FILE__"/a_gt_0_and_b_eq_0", "[Math][Mod]")
+{
+    // Exppect divide-by-zero
+    REQUIRE_THROWS_AS(Math::Mod(-199, 0), std::logic_error);
+    return;
+}
 
-		// a = 0 && b > 0
-		TEST_METHOD(a_eq_0_and_b_gt_0)
-		{
-			Assert::AreEqual(0, Math::Mod(0, 32));
-			return;
-		}
+// a = 0 && b > 0
+TEST_CASE(__FILE__"/a_eq_0_and_b_gt_0", "[Math][Mod]")
+{
+    REQUIRE(Math::Mod(0, 32) == 0);
+    return;
+}
 
-		// a < 0 && b = 0
-		TEST_METHOD(a_lt_0_and_b_eq_0)
-		{
-			// Exppect divide-by-zero
-			Assert::ExpectException<std::logic_error&>([]() {
-				Assert::AreEqual(0, Math::Mod(-199, 0));
-				});
-			return;
-		}
+// a < 0 && b = 0
+TEST_CASE(__FILE__"/a_lt_0_and_b_eq_0", "[Math][Mod]")
+{
+    // Expect divide-by-zero
+    REQUIRE_THROWS_AS(Math::Mod(-199, 0), std::logic_error);
+    return;
+}
 
-		// a = 0 && b < 0
-		TEST_METHOD(a_eq_0_and_b_lt_0)
-		{
-			Assert::AreEqual(0, Math::Mod(0, -32));
-			return;
-		}
-	};
+// a = 0 && b < 0
+TEST_CASE(__FILE__"/a_eq_0_and_b_lt_0", "[Math][Mod]")
+{
+    REQUIRE(Math::Mod(0, -32) == 0);
+    return;
 }
