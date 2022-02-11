@@ -10,7 +10,6 @@ namespace {
     static std::mt19937 rng = std::mt19937((std::random_device())());
 }
 
-
 // Tests if all values are 0 after initialization via default constructor
 TEST_CASE(__FILE__"/New_Vector_All_0", "[Vector3]")
 {
@@ -614,8 +613,7 @@ TEST_CASE(__FILE__"/Normalize_Length_Is_1", "[Vector3]")
         if (vec.SqrMagnitude() == 0)
             vec.x++;
 
-        std::wstringstream wss;
-        wss << vec;
+        INFO(vec);
         REQUIRE(Math::Similar(vec.Normalize().Magnitude(), 1.0)); // Account for floating point inaccuracy
     }
 
