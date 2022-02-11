@@ -1,309 +1,294 @@
-#include "CppUnitTest.h"
-#include "../Eule/Quaternion.h"
-#include "../Eule/Math.h"
+#include "Catch2.h"
+#include <Eule/Quaternion.h>
+#include <Eule/Math.h>
 #include "../_TestingUtilities/HandyMacros.h"
 #include <random>
 #include <sstream>
 
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace Eule;
 
-namespace TransformRelated
+namespace {
+    static std::mt19937 rng = std::mt19937((std::random_device())());
+}
+
+// Tests that if constructed with the default constructor, that all values are 0 (but w should be 1)
+TEST_CASE(__FILE__"/Default_Constructor_All_0", "[Quaternion]")
 {
-	TEST_CLASS(_Quaternion)
-	{
-	private:
-		std::mt19937 rng;
+    const Quaternion q;
+    REQUIRE(Vector4d(0, 0, 0, 1) == q.GetRawValues());
 
-	public:
-		// Constructor
-		_Quaternion()
-		{
-			rng = std::mt19937((std::random_device())());
-			return;
-		}
+    return;
+}
 
-		// Tests that if constructed with the default constructor, that all values are 0 (but w should be 1)
-		TEST_METHOD(Default_Constructor_All_0)
-		{
-			Quaternion q;
-			Assert::IsTrue(Vector4d(0, 0, 0, 1) == q.GetRawValues());
+// Tests that getting and setting raw values works
+TEST_CASE(__FILE__"/Can_Set_Get_Raw_Values", "[Quaternion]")
+{
+    // Test 1000 times
+    for (std::size_t i = 0; i < 1000; i++)
+    {
+        const Vector4d v(
+            rng() % 90,
+            rng() % 90,
+            rng() % 90,
+            rng() % 90
+        );
 
-			return;
-		}
+        Quaternion q(Vector4d(0, 0, 0, 0)); // Garbage values
 
-		// Tests that getting and setting raw values works
-		TEST_METHOD(Can_Set_Get_Raw_Values)
-		{
-			// Test 1000 times
-			for (std::size_t i = 0; i < 1000; i++)
-			{
-				Vector4d v(
-					rng() % 90,
-					rng() % 90,
-					rng() % 90,
-					rng() % 90
-				);
+        q.SetRawValues(v);
+        REQUIRE(v.Similar(q.GetRawValues()));
+    }
 
-				Quaternion q(Vector4d(0, 0, 0, 0)); // Garbage values
-				
-				q.SetRawValues(v);
-				Assert::IsTrue(v.Similar(q.GetRawValues()));
-			}
+    return;
+}
 
-			return;
-		}
+// Tests that retrieving euler angles (without gimbal lock) results in the same values as put in
+TEST_CASE(__FILE__"/To_Euler_From_Euler", "[Quaternion]")
+{
+    // Test 1000 times
+    for (std::size_t i = 0; i < 1000; i++)
+    {
+        // Create vector
+        const Vector3d eul(
+            rng() % 90,
+            rng() % 90,
+            rng() % 90
+        );
 
-		// Tests that retreiving euler angles (without gimbal lock) results in the same values as put in
-		TEST_METHOD(To_Euler_From_Euler)
-		{
-			// Test 1000 times
-			for (std::size_t i = 0; i < 1000; i++)
-			{
-				// Create vector
-				Vector3d eul(
-					rng() % 90,
-					rng() % 90,
-					rng() % 90
-				);
+        // Create quaternion from vector
+        const Quaternion q(eul);
 
-				// Create quaternion from vector
-				Quaternion q(eul);
+        // Create debug output
+        INFO('\n'
+            << "Actual vals: " << q.ToEulerAngles() << '\n'
+            << "Target vals: " << eul << '\n'
+        );
 
-				// Create debug output
-				std::wstringstream wss;
-				wss << std::endl
-					<< "Actual vals: " << q.ToEulerAngles() << std::endl
-					<< "Target vals: " << eul << std::endl;
+        // Assertion
+        REQUIRE(eul.Similar(q.ToEulerAngles()));
+    }
 
-				// Assertion
-				Assert::IsTrue(eul.Similar(q.ToEulerAngles()), wss.str().c_str());
-			}
+    return;
+}
 
-			return;
-		}
+// Tests that adding angles (0,0,0) does not modify the quaternion
+TEST_CASE(__FILE__"/Add_Angles_0_Does_Nothing", "[Quaternion]")
+{
+    const Quaternion a(Vector3d(0, -45, 45));
+    const Quaternion b(Vector3d(0, 0, 0));
 
-		// Tests that adding angles (0,0,0) does not modify the quaternion
-		TEST_METHOD(Add_Angles_0_Does_Nothing)
-		{
-			Quaternion a(Vector3d(0, -45, 45));
-			Quaternion b(Vector3d(0, 0, 0));
+    REQUIRE(Vector3d(0, -45, 45).Similar((a * b).ToEulerAngles()));
 
-			Assert::IsTrue(Vector3d(0, -45, 45).Similar((a * b).ToEulerAngles()));
+    return;
+}
 
-			return;
-		}
+// Tests that subtracting angles (0,0,0) does not modify the quaternion
+TEST_CASE(__FILE__"/Sub_Angles_0_Does_Nothing", "[Quaternion]")
+{
+    const Quaternion a(Vector3d(0, -45, 45));
+    const Quaternion b(Vector3d(0, 0, 0));
 
-		// Tests that subtracting angles (0,0,0) does not modify the quaternion
-		TEST_METHOD(Sub_Angles_0_Does_Nothing)
-		{
-			Quaternion a(Vector3d(0, -45, 45));
-			Quaternion b(Vector3d(0, 0, 0));
+    REQUIRE(Vector3d(0, -45, 45).Similar((a / b).ToEulerAngles()));
 
-			Assert::IsTrue(Vector3d(0, -45, 45).Similar((a / b).ToEulerAngles()));
+    return;
+}
 
-			return;
-		}
+// Tests that subtracting by itself always returns (0,0,0)
+TEST_CASE(__FILE__"/Sub_Itself_Is_0", "[Quaternion]")
+{
+    // Run test 100 times
+    for (std::size_t i = 0; i < 100; i++)
+    {
+        const Quaternion a(Vector3d(LARGE_RAND_DOUBLE, LARGE_RAND_DOUBLE, LARGE_RAND_DOUBLE));
+        REQUIRE(Vector3d(0,0,0).Similar((a / a).ToEulerAngles()));
+    }
 
-		// Tests that subtracting by itself always returns (0,0,0)
-		TEST_METHOD(Sub_Itself_Is_0)
-		{
-			// Run test 100 times
-			for (std::size_t i = 0; i < 100; i++)
-			{
-				Quaternion a(Vector3d(LARGE_RAND_DOUBLE, LARGE_RAND_DOUBLE, LARGE_RAND_DOUBLE));
-				Assert::IsTrue(Vector3d(0,0,0).Similar((a / a).ToEulerAngles()));
-			}
+    return;
+}
 
-			return;
-		}
+// Tests that rotating a vector is equal to multiplying it with the inverted rotation matrix
+TEST_CASE(__FILE__"/RotateVector_Equal_to_RotationMatrix", "[Quaternion]")
+{
+    // Run test 1000 times
+    for (std::size_t i = 0; i < 1000; i++)
+    {
+        const Quaternion a(Vector3d(LARGE_RAND_DOUBLE, LARGE_RAND_DOUBLE, LARGE_RAND_DOUBLE));
 
-		// Tests that rotating a vector is equal to multiplying it with the inverted rotation matrix
-		TEST_METHOD(RotateVector_Equal_to_RotationMatrix)
-		{
-			// Run test 1000 times
-			for (std::size_t i = 0; i < 1000; i++)
-			{
-				Quaternion a(Vector3d(LARGE_RAND_DOUBLE, LARGE_RAND_DOUBLE, LARGE_RAND_DOUBLE));
+        const Vector3d point(32, 19, -14);
 
-				Vector3d point(32, 19, -14);
+        // Generate debug output
+        INFO((point * a.ToRotationMatrix()) << '\n' << "===" << (a * point) << '\n');
 
-				// Generate debug output
-				std::wstringstream ss;
-				ss << (point * a.ToRotationMatrix()) << std::endl << L"===" << (a * point) << std::endl;
+        REQUIRE((point * a.ToRotationMatrix()).Similar(a * point));
+    }
 
-				Assert::IsTrue((point * a.ToRotationMatrix()).Similar(a * point), ss.str().c_str());
-			}
+    return;
+}
 
-			return;
-		}
+// Tests that a *= b will result in the exact same outcome as a = a * b
+TEST_CASE(__FILE__"/MultiplyEquals_Operator_Same_Result_As_Multiply_Operator", "[Quaternion]")
+{
+    // Run tests 1000 times
+    for (std::size_t i = 0; i < 1000; i++)
+    {
+        // Setup
+        Quaternion a(Vector3d(rng() % 360, rng() % 360, rng() % 360));
+        const Quaternion b(Vector3d(rng() % 360, rng() % 360, rng() % 360));
 
-		// Tests that a *= b will result in the exact same outcome as a = a * b
-		TEST_METHOD(MultiplyEquals_Operator_Same_Result_As_Multiply_Operator)
-		{
-			// Run tests 1000 times
-			for (std::size_t i = 0; i < 1000; i++)
-			{
-				// Setup
-				Quaternion a(Vector3d(rng() % 360, rng() % 360, rng() % 360));
-				Quaternion b(Vector3d(rng() % 360, rng() % 360, rng() % 360));
-				
-				// Exercise
-				Quaternion ref = a * b;
-				a *= b;
+        // Exercise
+        Quaternion ref = a * b;
+        a *= b;
 
-				// Verify
-				Assert::IsTrue(a.GetRawValues().Similar(ref.GetRawValues()));
-			}
+        // Verify
+        REQUIRE(a.GetRawValues().Similar(ref.GetRawValues()));
+    }
 
-			return;
-		}
+    return;
+}
 
-		// Tests that a /= b will result in the exact same outcome as a = a / b
-		TEST_METHOD(DivideEquals_Operator_Same_Result_As_Divide_Operator)
-		{
-			// Run tests 1000 times
-			for (std::size_t i = 0; i < 1000; i++)
-			{
-				// Setup
-				Quaternion a(Vector3d(rng() % 360, rng() % 360, rng() % 360));
-				Quaternion b(Vector3d(rng() % 360, rng() % 360, rng() % 360));
+// Tests that a /= b will result in the exact same outcome as a = a / b
+TEST_CASE(__FILE__"/DivideEquals_Operator_Same_Result_As_Divide_Operator", "[Quaternion]")
+{
+    // Run tests 1000 times
+    for (std::size_t i = 0; i < 1000; i++)
+    {
+        // Setup
+        Quaternion a(Vector3d(rng() % 360, rng() % 360, rng() % 360));
+        const Quaternion b(Vector3d(rng() % 360, rng() % 360, rng() % 360));
 
-				// Exercise
-				Quaternion ref = a / b;
-				a /= b;
+        // Exercise
+        Quaternion ref = a / b;
+        a /= b;
 
-				// Verify
-				Assert::IsTrue(a.GetRawValues().Similar(ref.GetRawValues()));
-			}
+        // Verify
+        REQUIRE(a.GetRawValues().Similar(ref.GetRawValues()));
+    }
 
-			return;
-		}
+    return;
+}
 
-		// Tests basic equals comparison -> true
-		TEST_METHOD(Basic_EqualsComparison_True)
-		{
-			// Run tests 1000 times
-			for (std::size_t i = 0; i < 1000; i++)
-			{
-				// Setup
-				Vector3d e(rng() % 360, rng() % 360, rng() % 360);
-				Quaternion a(e);
-				Quaternion b(e);
+// Tests basic equals comparison -> true
+TEST_CASE(__FILE__"/Basic_EqualsComparison_True", "[Quaternion]")
+{
+    // Run tests 1000 times
+    for (std::size_t i = 0; i < 1000; i++)
+    {
+        // Setup
+        const Vector3d e(rng() % 360, rng() % 360, rng() % 360);
+        const Quaternion a(e);
+        const Quaternion b(e);
 
-				// Exercise and verify
-				Assert::IsTrue(a == b);
-			}
+        // Exercise and verify
+        REQUIRE(a == b);
+    }
 
-			return;
-		}
+    return;
+}
 
-		// Tests basic equals comparison -> true
-		TEST_METHOD(Basic_EqualsComparison_False)
-		{
-			// Run tests 1000 times
-			for (std::size_t i = 0; i < 1000; i++)
-			{
-				// Setup
-				Vector3d ae(rng() % 360, rng() % 360, rng() % 360);
-				Vector3d be(rng() % 360, rng() % 360, rng() % 360);
+// Tests basic equals comparison -> true
+TEST_CASE(__FILE__"/Basic_EqualsComparison_False", "[Quaternion]")
+{
+    // Run tests 1000 times
+    for (std::size_t i = 0; i < 1000; i++)
+    {
+        // Setup
+        const Vector3d ae(rng() % 360, rng() % 360, rng() % 360);
+        const Vector3d be(rng() % 360, rng() % 360, rng() % 360);
 
-				// Abort if both vectors are equal
-				if (ae == be)
-				{
-					i--;
-					continue;
-				}
+        // Abort if both vectors are equal
+        if (ae == be)
+        {
+            i--;
+            continue;
+        }
 
-				Quaternion a(ae);
-				Quaternion b(be);
+        const Quaternion a(ae);
+        const Quaternion b(be);
 
-				// Exercise and verify
-				Assert::IsFalse(a == b);
-			}
+        // Exercise and verify
+        REQUIRE_FALSE(a == b);
+    }
 
-			return;
-		}
+    return;
+}
 
-		// Tests that different euler angles return true, if the angle is the same.
-		// Like [30, -10, 59] == [390, 350, 419]
-		TEST_METHOD(Equals_Comparison_Same_Rotation_Different_EulerAngles)
-		{
-			// Run tests 1000 times
-			for (std::size_t i = 0; i < 1000; i++)
-			{
-				// Setup
-				//    Create random rotation
-				Vector3d ae(rng() % 360, rng() % 360, rng() % 360);
-				
-				// add or subtract a random multiple of 360
-				#define keep_rot_change_values (360.0 * (double)(rng() % 20) * ((rng()%2) ? 1.0 : -1.0))
-				Vector3d be(ae.x + keep_rot_change_values, ae.y + keep_rot_change_values, ae.z + keep_rot_change_values);
-				#undef keep_rot_change_values
+// Tests that different euler angles return true, if the angle is the same.
+// Like [30, -10, 59] == [390, 350, 419]
+TEST_CASE(__FILE__"/Equals_Comparison_Same_Rotation_Different_EulerAngles", "[Quaternion]")
+{
+    // Run tests 1000 times
+    for (std::size_t i = 0; i < 1000; i++)
+    {
+        // Setup
+        //    Create random rotation
+        const Vector3d ae(rng() % 360, rng() % 360, rng() % 360);
 
-				// Create quaternions
-				Quaternion a(ae);
-				Quaternion b(be);
+        // add or subtract a random multiple of 360
+        #define keep_rot_change_values (360.0 * (double)(rng() % 20) * ((rng()%2) ? 1.0 : -1.0))
+        const Vector3d be(ae.x + keep_rot_change_values, ae.y + keep_rot_change_values, ae.z + keep_rot_change_values);
+        #undef keep_rot_change_values
 
-				// Exercise & Verify
-				//    Create debug output
+        // Create quaternions
+        const Quaternion a(ae);
+        const Quaternion b(be);
 
-				std::wstringstream wss;
-				wss << "ae: " << ae << std::endl
-					<< "be: " << be << std::endl
-					<< "a: " << a << std::endl
-					<< "b: " << b << std::endl;
+        // Exercise & Verify
+        //    Create debug output
 
-				//    Assertion
-				Assert::IsTrue(a == b, wss.str().c_str());
-			}
+        INFO("ae: " << ae << '\n'
+            << "be: " << be << '\n'
+            << "a: " << a << '\n'
+            << "b: " << b << '\n'
+        );
 
-			return;
-		}
+        //    Assertion
+        REQUIRE(a == b);
+    }
 
-		// Tests basic not-equals comparison -> false
-		TEST_METHOD(Basic_NotEqualsComparison_False)
-		{
-			// Run tests 1000 times
-			for (std::size_t i = 0; i < 1000; i++)
-			{
-				// Setup
-				Vector3d e(rng() % 360, rng() % 360, rng() % 360);
-				Quaternion a(e);
-				Quaternion b(e);
+    return;
+}
 
-				// Exercise and verify
-				Assert::IsFalse(a != b);
-			}
+// Tests basic not-equals comparison -> false
+TEST_CASE(__FILE__"/Basic_NotEqualsComparison_False", "[Quaternion]")
+{
+    // Run tests 1000 times
+    for (std::size_t i = 0; i < 1000; i++)
+    {
+        // Setup
+        const Vector3d e(rng() % 360, rng() % 360, rng() % 360);
+        const Quaternion a(e);
+        const Quaternion b(e);
 
-			return;
-		}
+        // Exercise and verify
+        REQUIRE_FALSE(a != b);
+    }
 
-		// Tests basic not-equals comparison -> true
-		TEST_METHOD(Basic_NotEqualsComparison_True)
-		{
-			// Run tests 1000 times
-			for (std::size_t i = 0; i < 1000; i++)
-			{
-				// Setup
-				Vector3d ae(rng() % 360, rng() % 360, rng() % 360);
-				Vector3d be(rng() % 360, rng() % 360, rng() % 360);
+    return;
+}
 
-				// Abort if both vectors are equal
-				if (ae == be)
-				{
-					i--;
-					continue;
-				}
+// Tests basic not-equals comparison -> true
+TEST_CASE(__FILE__"/Basic_NotEqualsComparison_True", "[Quaternion]")
+{
+    // Run tests 1000 times
+    for (std::size_t i = 0; i < 1000; i++)
+    {
+        // Setup
+        const Vector3d ae(rng() % 360, rng() % 360, rng() % 360);
+        const Vector3d be(rng() % 360, rng() % 360, rng() % 360);
 
-				Quaternion a(ae);
-				Quaternion b(be);
+        // Abort if both vectors are equal
+        if (ae == be)
+        {
+            i--;
+            continue;
+        }
 
-				// Exercise and verify
-				Assert::IsTrue(a != b);
-			}
+        const Quaternion a(ae);
+        const Quaternion b(be);
 
-			return;
-		}
-	};
+        // Exercise and verify
+        REQUIRE(a != b);
+    }
+
+    return;
 }

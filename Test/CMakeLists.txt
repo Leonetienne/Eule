@@ -23,6 +23,7 @@ add_executable(Tests
         Vector2.cpp
         Vector3.cpp
         Vector4.cpp
+        Quaternion.cpp
 )
 
 target_link_libraries(Tests Eule)
