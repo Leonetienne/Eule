@@ -12,6 +12,7 @@ add_executable(Tests
         Math__Mod.cpp
         Math__Oscillate.cpp
         Math__Abs.cpp
+        Math__Clamp.cpp
 )
 
 target_link_libraries(Tests Eule)
