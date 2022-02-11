@@ -31,7 +31,7 @@ namespace Eule
         Quaternion operator* (const Quaternion& q) const;
 
         //! Divides (applies)
-        Quaternion operator/ (Quaternion& q) const;
+        Quaternion operator/ (const Quaternion& q) const;
 
         //! Also multiplies
         Quaternion& operator*= (const Quaternion& q);
