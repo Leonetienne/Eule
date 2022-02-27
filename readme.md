@@ -1,5 +1,5 @@
 # Eule
-Eule is a neat math library used in my C++ projects.
+Eule is a homemade math library, mainly targetted towards computer graphics.
 
 # LICENSE
 ```
