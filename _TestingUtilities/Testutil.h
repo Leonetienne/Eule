@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
- 
+#include <math.h>
+
 class Testutil
 {
 public:
