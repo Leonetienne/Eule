@@ -251,7 +251,7 @@ TEST_CASE(__FILE__"/CrossProduct_Opposite_Direction", "[Vector][Vector2]")
         Vector2d a = Vector2d( x,  y) * (LARGE_RAND_DOUBLE / 1000.0);
         Vector2d b = Vector2d(-x, -y) * (LARGE_RAND_DOUBLE / 1000.0);
 
-        INFO(a << " CROSS " << b << " = " << a.CrossProduct(b));
+        INFO(a << " CROSS " << b << " = " << a.CrossProduct(b) << " in iteration #" << i << ". Shared x and y are: [" << x << ", " << y << "]");
         REQUIRE(Math::Similar(a.CrossProduct(b), 0.0, 10));
     }
 
@@ -287,15 +287,14 @@ TEST_CASE(__FILE__"/CrossProduct_BToTheLeft", "[Vector][Vector2]")
     for (std::size_t i = 0; i < 1000; i++)
     {
         double x = LARGE_RAND_DOUBLE;
-        double y = LARGE_RAND_DOUBLE;
+        double y = LARGE_RAND_POSITIVE_DOUBLE; // The dot product also flips if both points are negative in height.. let's keep it positive.
         if (x == 0) x++;
         if (y == 0) y++;
 
-        // Vector length should not matter, so randomize it
-        Vector2d a = Vector2d(x, y) * (rng() % 6969 + 1.0);
-        Vector2d b = Vector2d(x - (rng() % 6969 + 1.0), y) * (rng() % 6969 + 1.0);
+        Vector2d a = Vector2d(x, y);
+        Vector2d b = Vector2d(x - (rng() % 6969ll + 1.0), y);
 
-        INFO(a << " CROSS " << b << " = " << a.CrossProduct(b));
+        INFO(a << " CROSS " << b << " = " << a.CrossProduct(b) << " in iteration #" << i );
         REQUIRE(a.CrossProduct(b) > 0);
     }
 
@@ -309,13 +308,12 @@ TEST_CASE(__FILE__"/CrossProduct_BToTheRight", "[Vector][Vector2]")
     for (std::size_t i = 0; i < 1000; i++)
     {
         double x = LARGE_RAND_DOUBLE;
-        double y = LARGE_RAND_DOUBLE;
+        double y = LARGE_RAND_POSITIVE_DOUBLE; // The dot product also flips if both points are negative in height.. let's keep it positive.
         if (x == 0) x++;
         if (y == 0) y++;
 
-        // Vector length should not matter, so randomize it
-        Vector2d a = Vector2d(x, y) * (rng() % 6969 + 1.0);
-        Vector2d b = Vector2d(x + (rng() % 6969 + 1.0), y) * (rng() % 6969 + 1.0);
+        Vector2d a = Vector2d(x, y);
+        Vector2d b = Vector2d(x + (rng() % 6969ll + 1.0), y);
 
         INFO(a << L" CROSS " << b << L" = " << a.CrossProduct(b))
         REQUIRE(a.CrossProduct(b) < 0);
