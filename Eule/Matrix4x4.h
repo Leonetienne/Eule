@@ -3,7 +3,7 @@
 #include <array>
 #include <ostream>
 
-namespace Eule
+namespace Leonetienne::Eule
 {
 	template <class T>
 	class Vector3;

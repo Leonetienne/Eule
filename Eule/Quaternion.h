@@ -4,7 +4,7 @@
 #include "Matrix4x4.h"
 #include <mutex>
 
-namespace Eule
+namespace Leonetienne::Eule
 {
     /** 3D rotation representation
     */

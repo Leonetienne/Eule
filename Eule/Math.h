@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <math.h>
 
-namespace Eule
+namespace Leonetienne::Eule
 {
 	/** Math utility class containing basic functions.
 	*/

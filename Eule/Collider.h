@@ -1,7 +1,7 @@
 #pragma once
 #include "Vector3.h"
 
-namespace Eule
+namespace Leonetienne::Eule
 {
 	/** Abstract class of a collider domain.
 	* Specializations describe a shape in 3d space, and provide implementations of the methods below,

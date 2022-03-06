@@ -10,7 +10,7 @@
 #include "gcccompat.h"
 #endif
 
-namespace Eule {
+namespace Leonetienne::Eule {
 
     Quaternion::Quaternion()
     {

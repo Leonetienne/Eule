@@ -1,7 +1,7 @@
 #pragma once
 #include <random>
 
-namespace Eule
+namespace Leonetienne::Eule
 {
 	/** Extensive random number generator
 	*/

@@ -1,7 +1,7 @@
 #pragma once
 #include "../Eule/Vector2.h"
 
-namespace Eule
+namespace Leonetienne::Eule
 {
 	/** Trivial data structure representing a rectangle
 	*/

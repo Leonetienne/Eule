@@ -19,7 +19,7 @@
 	The T=int instantiation only exists to store a value-pair of two ints. Not so-much as a vector in terms of vector calculus.
 */
 
-namespace Eule {
+namespace Leonetienne::Eule {
 
     template<typename T>
     Vector2<T>::operator Vector3<T>() const
@@ -322,8 +322,8 @@ namespace Eule {
     bool Vector2<T>::Similar(const Vector2<T>& other, double epsilon) const
     {
         return
-                (::Eule::Math::Similar(x, other.x, epsilon)) &&
-                (::Eule::Math::Similar(y, other.y, epsilon))
+                (::Leonetienne::Eule::Math::Similar(x, other.x, epsilon)) &&
+                (::Leonetienne::Eule::Math::Similar(y, other.y, epsilon))
                 ;
     }
 

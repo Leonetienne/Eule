@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <sstream>
 
-namespace Eule {
+namespace Leonetienne::Eule {
     template<typename T>
     class Vector3;
 

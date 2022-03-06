@@ -3,7 +3,7 @@
 #include "Collider.h"
 #include <array>
 
-namespace Eule
+namespace Leonetienne::Eule
 {
 	/** A collider describing a trapazoidal prism.
 	* A trapazoidal prism is basically a box, but each vertex can be manipulated individually, altering

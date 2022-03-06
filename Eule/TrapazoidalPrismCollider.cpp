@@ -1,6 +1,6 @@
 #include "TrapazoidalPrismCollider.h"
 
-using namespace Eule;
+using namespace Leonetienne::Eule;
 
 TrapazoidalPrismCollider::TrapazoidalPrismCollider()
 {

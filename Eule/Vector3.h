@@ -5,7 +5,7 @@
 #include <sstream>
 #include "Matrix4x4.h"
 
-namespace Eule {
+namespace Leonetienne::Eule {
     template<typename T>
     class Vector2;
 
