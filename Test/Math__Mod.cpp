@@ -2,7 +2,7 @@
 #include <Eule/Math.h>
 #include <stdexcept>
 
-using namespace Eule;
+using namespace Leonetienne::Eule;
 
 /** Equivalence classes:
 * a -> numerator

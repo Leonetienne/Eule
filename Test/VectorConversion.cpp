@@ -6,7 +6,7 @@
 #include <random>
 #include <sstream>
 
-using namespace Eule;
+using namespace Leonetienne::Eule;
 
 namespace {
     static std::mt19937 rng = std::mt19937((std::random_device())());

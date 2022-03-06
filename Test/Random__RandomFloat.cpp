@@ -1,7 +1,7 @@
 #include "Catch2.h"
 #include <Eule/Random.h>
 
-using namespace Eule;
+using namespace Leonetienne::Eule;
 
 // Checks that all values are always 0 <= v <= 1
 TEST_CASE(__FILE__"/Always_Satisfies_0_lt_v_lt_1", "[Random][RandomFloat]")

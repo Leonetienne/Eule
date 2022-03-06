@@ -3,7 +3,7 @@
 #include <Eule/Random.h>
 #include <array>
 
-using namespace Eule;
+using namespace Leonetienne::Eule;
 
 // Checks that the produced unsigned-integer distribution shows a big standard deviation
 TEST_CASE(__FILE__"/Uint_Big_Standard_Deviation", "[Random][RandomInt]")

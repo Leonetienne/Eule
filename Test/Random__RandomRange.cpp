@@ -3,7 +3,7 @@
 #include <Eule/Random.h>
 #include <array>
 
-using namespace Eule;
+using namespace Leonetienne::Eule;
 
 // Checks that a random double is never outside the specification, two positive values
 TEST_CASE(__FILE__"/Random_Doublerange_Never_Outside_Specification__pos__pos", "[Random][RandomRange]")

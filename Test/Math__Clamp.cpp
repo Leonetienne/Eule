@@ -1,7 +1,7 @@
 #include "Catch2.h"
 #include <Eule/Math.h>
 
-using namespace Eule;
+using namespace Leonetienne::Eule;
 
 /** Equivalence classes:
 *		-- min < v < max	-> v

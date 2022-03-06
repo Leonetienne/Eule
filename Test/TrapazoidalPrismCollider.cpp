@@ -4,7 +4,7 @@
 #include <random>
 #include <array>
 
-using namespace Eule;
+using namespace Leonetienne::Eule;
 using TPC = TrapazoidalPrismCollider;
 
 namespace {

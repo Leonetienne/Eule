@@ -4,7 +4,7 @@
 #include <Eule/Math.h>
 #include <Eule/Constants.h>
 
-using namespace Eule;
+using namespace Leonetienne::Eule;
 
 // Checks that an oscillation of speed 1 between -1 and 1 is just equal to sin(counter*pi-pi/2)
 TEST_CASE(__FILE__"/Oracle_Sin", "[Math][Oscillate]")

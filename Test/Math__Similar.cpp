@@ -1,7 +1,7 @@
 #include "Catch2.h"
 #include <Eule/Math.h>
 
-using namespace Eule;
+using namespace Leonetienne::Eule;
 
 // Checks that the similar function works with an exact comparison -> true
 TEST_CASE(__FILE__"/Exact_Comparison_True", "[Math][Similar]")

@@ -583,31 +583,29 @@ namespace Leonetienne::Eule {
         return true;
     }
 
-    namespace Eule {
-        std::ostream &operator<<(std::ostream &os, const Matrix4x4 &m) {
-            os << std::endl;
+    std::ostream &operator<<(std::ostream &os, const Matrix4x4 &m) {
+        os << std::endl;
 
-            for (std::size_t y = 0; y < 4; y++) {
-                for (std::size_t x = 0; x < 4; x++)
-                    os << " | " << m[y][x];
+        for (std::size_t y = 0; y < 4; y++) {
+            for (std::size_t x = 0; x < 4; x++)
+                os << " | " << m[y][x];
 
-                os << " |" << std::endl;
-            }
-
-            return os;
+            os << " |" << std::endl;
         }
 
-        std::wostream &operator<<(std::wostream &os, const Matrix4x4 &m) {
-            os << std::endl;
+        return os;
+    }
 
-            for (std::size_t y = 0; y < 4; y++) {
-                for (std::size_t x = 0; x < 4; x++)
-                    os << L" | " << m[y][x];
+    std::wostream &operator<<(std::wostream &os, const Matrix4x4 &m) {
+        os << std::endl;
 
-                os << L" |" << std::endl;
-            }
+        for (std::size_t y = 0; y < 4; y++) {
+            for (std::size_t x = 0; x < 4; x++)
+                os << L" | " << m[y][x];
 
-            return os;
+            os << L" |" << std::endl;
         }
+
+        return os;
     }
 }
