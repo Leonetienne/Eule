@@ -2,7 +2,7 @@
 #include <Eule/Vector2.h>
 #include <Eule/Vector3.h>
 #include <Eule/Vector4.h>
-#include "../_TestingUtilities/HandyMacros.h"
+#include "TestingUtilities/HandyMacros.h"
 #include <random>
 #include <sstream>
 

@@ -1,4 +1,4 @@
-#include "../_TestingUtilities/Testutil.h"
+#include "TestingUtilities/Testutil.h"
 #include "Catch2.h"
 #include <Eule/Random.h>
 #include <Eule/Math.h>

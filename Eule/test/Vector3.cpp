@@ -1,7 +1,7 @@
 #include "Catch2.h"
 #include <Eule/Vector3.h>
 #include <Eule/Math.h>
-#include "../_TestingUtilities/HandyMacros.h"
+#include "TestingUtilities/HandyMacros.h"
 #include <random>
 
 using namespace Leonetienne::Eule;

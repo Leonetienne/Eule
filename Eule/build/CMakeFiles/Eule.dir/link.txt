@@ -1,2 +1,0 @@
-/usr/bin/ar qc libEule.a CMakeFiles/Eule.dir/src/Collider.cpp.o CMakeFiles/Eule.dir/src/Math.cpp.o CMakeFiles/Eule.dir/src/Matrix4x4.cpp.o CMakeFiles/Eule.dir/src/Quaternion.cpp.o CMakeFiles/Eule.dir/src/Random.cpp.o CMakeFiles/Eule.dir/src/TrapazoidalPrismCollider.cpp.o CMakeFiles/Eule.dir/src/Vector2.cpp.o CMakeFiles/Eule.dir/src/Vector3.cpp.o CMakeFiles/Eule.dir/src/Vector4.cpp.o
-/usr/bin/ranlib libEule.a

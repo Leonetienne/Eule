@@ -1,7 +1,7 @@
 #include "Catch2.h"
 #include <Eule/Quaternion.h>
 #include <Eule/Math.h>
-#include "../_TestingUtilities/HandyMacros.h"
+#include "TestingUtilities/HandyMacros.h"
 #include <random>
 #include <sstream>
 
