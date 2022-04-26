@@ -6,13 +6,16 @@ set(CMAKE_CXX_STANDARD 17)
 add_compile_definitions(_EULE_NO_INTRINSICS_)
 
 add_library(Eule
-        Collider.cpp
-        Math.cpp
-        Matrix4x4.cpp
-        Quaternion.cpp
-        Random.cpp
-        TrapazoidalPrismCollider.cpp
-        Vector2.cpp
-        Vector3.cpp
-        Vector4.cpp
+ src/Collider.cpp
+ src/Math.cpp
+ src/Matrix4x4.cpp
+ src/Quaternion.cpp
+ src/Random.cpp
+ src/TrapazoidalPrismCollider.cpp
+ src/Vector2.cpp
+ src/Vector3.cpp
+ src/Vector4.cpp
 )
+
+target_include_directories(Eule PRIVATE include)
+
