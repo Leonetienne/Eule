@@ -1,3 +1,5 @@
+[![Build Status](https://drone.leonetienne.de/api/badges/leonetienne/Eule/status.svg)](https://drone.leonetienne.de/leonetienne/Eule)
+
 # Eule
 Eule is a homemade math library, mainly targetted towards computer graphics.
 
